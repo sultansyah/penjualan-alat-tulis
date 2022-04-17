@@ -8,14 +8,59 @@ package halaman.karyawan;
  *
  * @author sultan
  */
-public class KaryawanView extends javax.swing.JPanel {
+import java.sql.*;
+import javax.swing.*;
+import javax.xml.crypto.Data;
+import net.proteanit.sql.DbUtils;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
+public class KaryawanView extends javax.swing.JPanel {
+ // Script variable statment
+        Connection con = null;
+	ResultSet rs = null;
+	PreparedStatement pst = null;
+	Statement statBrg;
+	Boolean ada = false;
     /**
      * Creates new form KaryawanView
      */
+        private void koneksi (){
+            try{
+                Class.forName("com.mysql.jdbc.Driver");
+                String url="jdbc:mysql://localhost/karyawan"; //url database
+                String user="root"; //user database
+                String pass=""; //password database
+                con = DriverManager.getConnection(url,user,pass);
+                statBrg = con.createStatement(rs.TYPE_SCROLL_SENSITIVE,rs.CONCUR_UPDATABLE);
+                rs = statBrg.executeQuery("select * from karyawan");
+            } catch(Exception e){
+                JOptionPane.showMessageDialog(null, e);
+                System.exit(0);
+            }
+        }
+        private void display(){
+        try{
+            String sql="select * from karyawan";
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+         private void Clear(){
+         jTextField1.setText(null);
+         jTextField2.setText(null);
+         jTextField3.setText(null);
+    }
+         
     public KaryawanView() {
         initComponents();
+        koneksi();   //memanggil fungsi koneksi
+        display(); // menggil fungsi dislay untuk menampilkan data ke table
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -115,6 +160,11 @@ public class KaryawanView extends javax.swing.JPanel {
         });
 
         Tclear.setText("Clear");
+        Tclear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TclearActionPerformed(evt);
+            }
+        });
 
         tkeluar.setText("Keluar");
         tkeluar.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +184,11 @@ public class KaryawanView extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -190,8 +245,7 @@ public class KaryawanView extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -209,8 +263,8 @@ public class KaryawanView extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)))
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TSimpan)
                     .addComponent(Tedit)
@@ -245,19 +299,91 @@ public class KaryawanView extends javax.swing.JPanel {
 
     private void TSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TSimpanActionPerformed
         // TODO add your handling code here:
+         try{
+            koneksi();
+            statBrg = con.createStatement();
+            String SQL = "insert into karyawan values('"+jTextField1.getText()+"','"+jTextField2.getText()+"','"+jTextField3.getText()+"','"+jTextField4.getText()+"','"+jTextField5.getText()+"','"+jTextField6.getText()+"')";
+            statBrg.executeUpdate(SQL);
+            display();
+            statBrg.close();
+            con.close();
+            Clear();
+            JOptionPane.showMessageDialog(null, "berhasil simpan");
+        } catch(Exception exc){
+           System.err.println(exc.getMessage()); 
+        }
     }//GEN-LAST:event_TSimpanActionPerformed
 
     private void TeditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TeditActionPerformed
         // TODO add your handling code here:
+        try{
+            koneksi();
+            statBrg = con.createStatement();
+            String SQL = "update karyawan SET id_karyawan = '"+jTextField1.getText()+"', nama_karyawan = '"+jTextField2.getText()+"', jenis_kelamin = '"+jTextField3.getText()+"', jabatan = '"+jTextField4.getText()+"', no_hp = '"+jTextField5.getText()+"', alamat = '"+jTextField6.getText()+"' WHERE id_karyawan = '"+jTextField1.getText()+"'";
+            statBrg.executeUpdate(SQL);
+            display();
+            statBrg.close();
+            con.close();
+            Clear();
+            JOptionPane.showMessageDialog(null, "berhasil edit");
+        } catch(Exception exc){
+            System.err.println(exc.getMessage());
+        }
     }//GEN-LAST:event_TeditActionPerformed
 
     private void ThapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThapusActionPerformed
         // TODO add your handling code here:
+          try{
+            koneksi();
+            statBrg = con.createStatement();
+            String SQL = "DELETE FROM karyawan WHERE id_karyawan = '"+jTextField1.getText()+"'";
+            statBrg.executeUpdate(SQL);
+            display();
+            statBrg.close();
+            con.close();
+            JOptionPane.showMessageDialog(null, "berhasil hapus");
+        }catch (Exception exc){
+            System.err.println(exc.getMessage());
+        }
     }//GEN-LAST:event_ThapusActionPerformed
 
     private void tkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tkeluarActionPerformed
         // TODO add your handling code here:
+        System.exit(0);// keluar
     }//GEN-LAST:event_tkeluarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        try {
+            koneksi();
+            int row =jTable1.getSelectedRow();
+            String tabel_klik=(jTable1.getModel().getValueAt(row, 0).toString());
+            java.sql.Statement stm = con.createStatement();
+            java.sql.ResultSet sql = stm.executeQuery("select * from karyawan where id_karyawan='"+tabel_klik+"'");
+            if(sql.next()){
+                String karyawan = sql.getString("ID_karyawan");
+                jTextField1.setText(karyawan);
+                String nama = sql.getString("nama_karyawan");
+                jTextField2.setText(nama);
+                String jeniskelamin = sql.getString("jenis_kelamin");
+                jTextField3.setText(jeniskelamin);
+                String jabatan = sql.getString("jabatan");
+                jTextField4.setText(jabatan);
+                String nohp = sql.getString("no_hp");
+                jTextField5.setText(nohp);
+                String alamat = sql.getString("alamat");
+                jTextField6.setText(alamat);
+                
+            }
+        } catch (Exception e) {}
+        
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void TclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TclearActionPerformed
+        // TODO add your handling code here:
+        Clear();
+    }//GEN-LAST:event_TclearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
