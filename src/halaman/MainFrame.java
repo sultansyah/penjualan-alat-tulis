@@ -4,6 +4,12 @@
  */
 package halaman;
 
+import halaman.stok.StokView;
+import halaman.laporan.LaporanView;
+import halaman.kasir.KasirView;
+import halaman.karyawan.KaryawanView;
+import halaman.home.HomeView;
+import halaman.about.AboutView;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.JFrame;
