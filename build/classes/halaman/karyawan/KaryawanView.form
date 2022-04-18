@@ -38,8 +38,6 @@
                               <Component id="Thapus" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="Tclear" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="tkeluar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -112,7 +110,6 @@
                   <Component id="TSimpan" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Tedit" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Thapus" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tkeluar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Tclear" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -215,14 +212,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TclearActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="tkeluar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Keluar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tkeluarActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

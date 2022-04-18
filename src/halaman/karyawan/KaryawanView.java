@@ -28,7 +28,7 @@ public class KaryawanView extends javax.swing.JPanel {
         private void koneksi (){
             try{
                 Class.forName("com.mysql.jdbc.Driver");
-                String url="jdbc:mysql://localhost/karyawan"; //url database
+                String url="jdbc:mysql://localhost/penjualan-alat-tulis"; //url database
                 String user="root"; //user database
                 String pass=""; //password database
                 con = DriverManager.getConnection(url,user,pass);
@@ -88,7 +88,6 @@ public class KaryawanView extends javax.swing.JPanel {
         Tedit = new javax.swing.JButton();
         Thapus = new javax.swing.JButton();
         Tclear = new javax.swing.JButton();
-        tkeluar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -166,13 +165,6 @@ public class KaryawanView extends javax.swing.JPanel {
             }
         });
 
-        tkeluar.setText("Keluar");
-        tkeluar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tkeluarActionPerformed(evt);
-            }
-        });
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -210,9 +202,7 @@ public class KaryawanView extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Thapus)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Tclear)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tkeluar))
+                                .addComponent(Tclear))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -269,7 +259,6 @@ public class KaryawanView extends javax.swing.JPanel {
                     .addComponent(TSimpan)
                     .addComponent(Tedit)
                     .addComponent(Thapus)
-                    .addComponent(tkeluar)
                     .addComponent(Tclear))
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -347,11 +336,6 @@ public class KaryawanView extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_ThapusActionPerformed
 
-    private void tkeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tkeluarActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);// keluar
-    }//GEN-LAST:event_tkeluarActionPerformed
-
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         // TODO add your handling code here:
@@ -362,7 +346,7 @@ public class KaryawanView extends javax.swing.JPanel {
             java.sql.Statement stm = con.createStatement();
             java.sql.ResultSet sql = stm.executeQuery("select * from karyawan where id_karyawan='"+tabel_klik+"'");
             if(sql.next()){
-                String karyawan = sql.getString("ID_karyawan");
+                String karyawan = sql.getString("id_karyawan");
                 jTextField1.setText(karyawan);
                 String nama = sql.getString("nama_karyawan");
                 jTextField2.setText(nama);
@@ -406,6 +390,5 @@ public class KaryawanView extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JButton tkeluar;
     // End of variables declaration//GEN-END:variables
 }
