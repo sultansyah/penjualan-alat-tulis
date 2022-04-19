@@ -39,20 +39,23 @@ public class menuStok extends javax.swing.JPanel {
             AbstractButton button = buttons.nextElement();
             if (button.isSelected()) {
                 String text = button.getText();
-                if(text.equals("ID")){
-                    return "id_barang";
-                } else if(text.equals("Nama")) {
-                    return "nama_barang";
-                } else if(text.equals("Jenis Barang")) {
-                    return "jenis_barang";
-                } else if(text.equals("Stok")) {
-                    return "stok_barang";
-                } else if(text.equals("Harga")) {
-                    return "harga_barang";
-                } else if(text.equals("Tanggal Masuk")) {
-                    return "tgl_masuk";
-                } else if(text.equals("Semua")){
-                    return "semua";
+                switch (text) {
+                    case "ID":
+                        return "id_barang";
+                    case "Nama":
+                        return "nama_barang";
+                    case "Jenis Barang":
+                        return "jenis_barang";
+                    case "Stok":
+                        return "stok_barang";
+                    case "Harga":
+                        return "harga_barang";
+                    case "Tanggal Masuk":
+                        return "tgl_masuk";
+                    case "Semua":
+                        return "semua";
+                    default:
+                        break;
                 }
             }
         }

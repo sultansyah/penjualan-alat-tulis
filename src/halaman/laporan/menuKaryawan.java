@@ -35,20 +35,23 @@ public class menuKaryawan extends javax.swing.JPanel {
             AbstractButton button = buttons.nextElement();
             if (button.isSelected()) {
                 String text = button.getText();
-                if (text.equals("ID")) {
-                    return "id_karyawan";
-                } else if (text.equals("Nama")) {
-                    return "nama_karyawan";
-                } else if (text.equals("Jenis Kelamin")) {
-                    return "jenis_kelamin";
-                } else if (text.equals("Jabatan")) {
-                    return "jabatan";
-                } else if (text.equals("No Hp")) {
-                    return "no_hp";
-                } else if (text.equals("Alamat")) {
-                    return "alamat";
-                } else if (text.equals("Semua")) {
-                    return "semua";
+                switch (text) {
+                    case "ID":
+                        return "id_karyawan";
+                    case "Nama":
+                        return "nama_karyawan";
+                    case "Jenis Kelamin":
+                        return "jenis_kelamin";
+                    case "Jabatan":
+                        return "jabatan";
+                    case "No Hp":
+                        return "no_hp";
+                    case "Alamat":
+                        return "alamat";
+                    case "Semua":
+                        return "semua";
+                    default:
+                        break;
                 }
             }
         }
