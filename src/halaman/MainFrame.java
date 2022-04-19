@@ -10,6 +10,7 @@ import halaman.kasir.KasirView;
 import halaman.karyawan.KaryawanView;
 import halaman.home.HomeView;
 import halaman.about.AboutView;
+import halaman.laporan.LaporanView1;
 import java.awt.GridBagLayout;
 import javax.swing.JOptionPane;
 
@@ -24,6 +25,7 @@ public class MainFrame extends javax.swing.JFrame {
     StokView stok;
     KaryawanView karyawan;
     LaporanView laporan;
+    LaporanView1 laporan1;
 
     /**
      * Creates new form MainFrame
@@ -392,9 +394,10 @@ public class MainFrame extends javax.swing.JFrame {
         mainPanel.revalidate();
         
         // add
-        laporan = new LaporanView();
+//        laporan = new LaporanView();
+        laporan1 = new LaporanView1();
         
-        mainPanel.add(laporan);
+        mainPanel.add(laporan1);
         mainPanel.repaint();
         mainPanel.revalidate();
     }//GEN-LAST:event_btnLaporanActionPerformed
