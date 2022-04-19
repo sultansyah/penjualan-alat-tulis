@@ -10,9 +10,7 @@ import halaman.kasir.KasirView;
 import halaman.karyawan.KaryawanView;
 import halaman.home.HomeView;
 import halaman.about.AboutView;
-import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
