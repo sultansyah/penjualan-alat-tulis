@@ -4,13 +4,9 @@
  */
 package halaman.laporan;
 
-import java.awt.List;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Enumeration;
 import javax.swing.AbstractButton;
-import javax.swing.JFrame;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -20,10 +16,6 @@ import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
-import java.io.*;
-import java.lang.*;
-import java.util.*;
-import javax.swing.JComboBox;
 
 /**
  *

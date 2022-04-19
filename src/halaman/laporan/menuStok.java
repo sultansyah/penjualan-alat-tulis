@@ -219,17 +219,17 @@ public class menuStok extends javax.swing.JPanel {
             // TODO add your handling code here:
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/penjualan-alat-tulis", "root", "");
-            JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\sultan\\Documents\\NetBeansProjects\\penjualan-alat-tulis\\src\\halaman\\laporan\\laporanKaryawan.jrxml");
+            JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\sultan\\Documents\\NetBeansProjects\\penjualan-alat-tulis\\src\\halaman\\laporan\\laporanStok.jrxml");
             
             String selectedButton;
             String query;
             String nilai = txtNilaiBarang.getText();
                     
             if(getSelectedButtonBarang().equals("semua")){
-                query = "SELECT * FROM barang";
+                query = "SELECT * FROM stok_barang";
             } else {
                 selectedButton = getSelectedButtonBarang();
-                query = "SELECT * FROM barang WHERE " + selectedButton + " = " + "'" + nilai + "'";
+                query = "SELECT * FROM barang stok_barang " + selectedButton + " = " + "'" + nilai + "'";
             }
             
 //            System.out.println(query);
