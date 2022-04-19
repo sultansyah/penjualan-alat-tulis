@@ -11,7 +11,7 @@ package halaman.laporan;
 public class LaporanView1 extends javax.swing.JPanel {
     
     menuKaryawan karyawan;
-    menuBarang barang;
+    menuStok barang;
     menuKasir kasir;
     menuStok stok;
     
@@ -47,6 +47,7 @@ public class LaporanView1 extends javax.swing.JPanel {
         mainPanel = new javax.swing.JPanel();
         karyawanPanel = new javax.swing.JPanel();
         barangPanel = new javax.swing.JPanel();
+        kasirPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(153, 153, 153));
 
@@ -146,6 +147,19 @@ public class LaporanView1 extends javax.swing.JPanel {
 
         mainPanel.add(barangPanel, "card3");
 
+        javax.swing.GroupLayout kasirPanelLayout = new javax.swing.GroupLayout(kasirPanel);
+        kasirPanel.setLayout(kasirPanelLayout);
+        kasirPanelLayout.setHorizontalGroup(
+            kasirPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 573, Short.MAX_VALUE)
+        );
+        kasirPanelLayout.setVerticalGroup(
+            kasirPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 507, Short.MAX_VALUE)
+        );
+
+        mainPanel.add(kasirPanel, "card4");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -221,6 +235,7 @@ public class LaporanView1 extends javax.swing.JPanel {
     private javax.swing.JButton btnStok;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel karyawanPanel;
+    private javax.swing.JPanel kasirPanel;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel menuPanel;
     // End of variables declaration//GEN-END:variables
