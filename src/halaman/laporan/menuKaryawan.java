@@ -68,7 +68,7 @@ public class menuKaryawan extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         buttonGroupKaryawan = new javax.swing.ButtonGroup();
@@ -95,6 +95,14 @@ public class menuKaryawan extends javax.swing.JPanel {
 
         buttonGroupKaryawan.add(jRadioButton1);
         jRadioButton1.setText("ID");
+        jRadioButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jRadioButton1MouseEntered(evt);
+            }
+        });
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
@@ -103,18 +111,43 @@ public class menuKaryawan extends javax.swing.JPanel {
 
         buttonGroupKaryawan.add(jRadioButton2);
         jRadioButton2.setText("Nama");
+        jRadioButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton2MouseClicked(evt);
+            }
+        });
 
         buttonGroupKaryawan.add(jRadioButton3);
         jRadioButton3.setText("Jenis Kelamin");
+        jRadioButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton3MouseClicked(evt);
+            }
+        });
 
         buttonGroupKaryawan.add(jRadioButton4);
         jRadioButton4.setText("Jabatan");
+        jRadioButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton4MouseClicked(evt);
+            }
+        });
 
         buttonGroupKaryawan.add(jRadioButton5);
         jRadioButton5.setText("No Hp");
+        jRadioButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton5MouseClicked(evt);
+            }
+        });
 
         buttonGroupKaryawan.add(jRadioButton6);
         jRadioButton6.setText("Alamat");
+        jRadioButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton6MouseClicked(evt);
+            }
+        });
 
         jLabel3.setText("Dipilih Berdasarkan");
 
@@ -142,65 +175,89 @@ public class menuKaryawan extends javax.swing.JPanel {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jRadioButton3, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jRadioButton4, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jRadioButton5, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jRadioButton7, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jRadioButton6, javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtNilaiKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 119,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(355, 355, 355))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCetakKaryawan)
-                                .addGap(232, 232, 232)));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRadioButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jRadioButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtNilaiKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(355, 355, 355))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCetakKaryawan)
+                .addGap(232, 232, 232))
+        );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jRadioButton7)
-                                        .addComponent(txtNilaiKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                                javax.swing.GroupLayout.DEFAULT_SIZE,
-                                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton6)
-                                .addGap(31, 31, 31)
-                                .addComponent(btnCetakKaryawan)
-                                .addContainerGap(289, Short.MAX_VALUE)));
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton7)
+                    .addComponent(txtNilaiKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButton6)
+                .addGap(31, 31, 31)
+                .addComponent(btnCetakKaryawan)
+                .addContainerGap(289, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jRadioButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton1MouseClicked
+        // TODO add your handling code here:
+        txtNilaiKaryawan.setEditable(true);
+    }//GEN-LAST:event_jRadioButton1MouseClicked
+
+    private void jRadioButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1MouseEntered
+
+    private void jRadioButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton2MouseClicked
+        // TODO add your handling code here:
+        txtNilaiKaryawan.setEditable(true);
+    }//GEN-LAST:event_jRadioButton2MouseClicked
+
+    private void jRadioButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton3MouseClicked
+        // TODO add your handling code here:
+        txtNilaiKaryawan.setEditable(true);
+    }//GEN-LAST:event_jRadioButton3MouseClicked
+
+    private void jRadioButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton4MouseClicked
+        // TODO add your handling code here:
+        txtNilaiKaryawan.setEditable(true);
+    }//GEN-LAST:event_jRadioButton4MouseClicked
+
+    private void jRadioButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton5MouseClicked
+        // TODO add your handling code here:
+        txtNilaiKaryawan.setEditable(true);
+    }//GEN-LAST:event_jRadioButton5MouseClicked
+
+    private void jRadioButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton6MouseClicked
+        // TODO add your handling code here:
+        txtNilaiKaryawan.setEditable(true);
+    }//GEN-LAST:event_jRadioButton6MouseClicked
 
     private void btnCetakKaryawanActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:

@@ -91,15 +91,35 @@ public class menuStok extends javax.swing.JPanel {
 
         buttonGroupBarang.add(jRadioButton10);
         jRadioButton10.setText("Stok");
+        jRadioButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton10MouseClicked(evt);
+            }
+        });
 
         buttonGroupBarang.add(jRadioButton11);
         jRadioButton11.setText("Jenis Barang");
+        jRadioButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton11MouseClicked(evt);
+            }
+        });
 
         buttonGroupBarang.add(jRadioButton12);
         jRadioButton12.setText("Nama");
+        jRadioButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton12MouseClicked(evt);
+            }
+        });
 
         buttonGroupBarang.add(jRadioButton13);
         jRadioButton13.setText("ID");
+        jRadioButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton13MouseClicked(evt);
+            }
+        });
         jRadioButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton13ActionPerformed(evt);
@@ -138,9 +158,19 @@ public class menuStok extends javax.swing.JPanel {
 
         buttonGroupBarang.add(jRadioButton8);
         jRadioButton8.setText("Tanggal Masuk");
+        jRadioButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton8MouseClicked(evt);
+            }
+        });
 
         buttonGroupBarang.add(jRadioButton9);
         jRadioButton9.setText("Harga");
+        jRadioButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRadioButton9MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -232,10 +262,12 @@ public class menuStok extends javax.swing.JPanel {
                 query = "SELECT * FROM stok_barang";
             } else {
                 selectedButton = getSelectedButtonBarang();
-                query = "SELECT * FROM barang stok_barang " + selectedButton + " = " + "'" + nilai + "'";
+                query = "SELECT * FROM stok_barang WHERE " + selectedButton + " = " + "'" + nilai + "'";
             }
             
-//            System.out.println(query);
+            
+            
+            System.out.println(query);
             
             JRDesignQuery updateQuery = new JRDesignQuery();
             updateQuery.setText(query);
@@ -251,6 +283,36 @@ public class menuStok extends javax.swing.JPanel {
             System.out.println(ex);
         }
     }//GEN-LAST:event_btnCetakBarangActionPerformed
+
+    private void jRadioButton13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton13MouseClicked
+        // TODO add your handling code here:
+        txtNilaiBarang.setEditable(true);
+    }//GEN-LAST:event_jRadioButton13MouseClicked
+
+    private void jRadioButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton12MouseClicked
+        // TODO add your handling code here:
+        txtNilaiBarang.setEditable(true);
+    }//GEN-LAST:event_jRadioButton12MouseClicked
+
+    private void jRadioButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton11MouseClicked
+        // TODO add your handling code here:
+        txtNilaiBarang.setEditable(true);
+    }//GEN-LAST:event_jRadioButton11MouseClicked
+
+    private void jRadioButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton10MouseClicked
+        // TODO add your handling code here:
+        txtNilaiBarang.setEditable(true);
+    }//GEN-LAST:event_jRadioButton10MouseClicked
+
+    private void jRadioButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton9MouseClicked
+        // TODO add your handling code here:
+        txtNilaiBarang.setEditable(true);
+    }//GEN-LAST:event_jRadioButton9MouseClicked
+
+    private void jRadioButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRadioButton8MouseClicked
+        // TODO add your handling code here:
+        txtNilaiBarang.setEditable(true);
+    }//GEN-LAST:event_jRadioButton8MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

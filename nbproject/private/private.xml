@@ -4,8 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/sultan/Documents/NetBeansProjects/penjualan-alat-tulis/src/halaman/MainFrame.java</file>
-            <file>file:/C:/Users/sultan/Documents/NetBeansProjects/penjualan-alat-tulis/src/halaman/laporan/LaporanView.java</file>
-            <file>file:/C:/Users/sultan/Documents/NetBeansProjects/penjualan-alat-tulis/src/halaman/laporan/laporanKaryawan.jrxml</file>
+            <file>file:/C:/Users/sultan/Documents/NetBeansProjects/penjualan-alat-tulis/src/halaman/laporan/menuKaryawan.java</file>
+            <file>file:/C:/Users/sultan/Documents/NetBeansProjects/penjualan-alat-tulis/src/halaman/laporan/laporanStok.jrxml</file>
+            <file>file:/C:/Users/sultan/Documents/NetBeansProjects/penjualan-alat-tulis/src/halaman/laporan/menuStok.java</file>
         </group>
     </open-files>
 </project-private>
