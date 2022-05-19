@@ -339,30 +339,30 @@ public class LaporanView extends javax.swing.JPanel {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/penjualan-alat-tulis", "root", "");
             JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\sultan\\Documents\\NetBeansProjects\\penjualan-alat-tulis\\src\\halaman\\laporan\\laporanKaryawan.jrxml");
-            
+
             String selectedButton;
             String query;
             String nilai = txtNilaiKaryawan.getText();
-                    
+
             if(getSelectedButtonKaryawan().equals("semua")){
                 query = "SELECT * FROM karyawan";
             } else {
                 selectedButton = getSelectedButtonKaryawan();
                 query = "SELECT * FROM karyawan WHERE " + selectedButton + " = " + "'" + nilai + "'";
             }
-            
-//            System.out.println(query);
-            
+
+            //            System.out.println(query);
+
             JRDesignQuery updateQuery = new JRDesignQuery();
             updateQuery.setText(query);
-            
+
             jdesign.setQuery(updateQuery);
-            
+
             JasperReport jreport = JasperCompileManager.compileReport(jdesign);
             JasperPrint jprint = JasperFillManager.fillReport(jreport, null, con);
-            
+
             JasperViewer.viewReport(jprint);
-            
+
         } catch (ClassNotFoundException | SQLException | JRException ex) {
             System.out.println(ex);
         }

@@ -10,6 +10,7 @@ import halaman.kasir.KasirView;
 import halaman.karyawan.KaryawanView;
 import halaman.home.HomeView;
 import halaman.about.AboutView;
+import halaman.kontakcs.ViewKontakCS;
 import halaman.laporan.LaporanView1;
 import java.awt.GridBagLayout;
 import javax.swing.JOptionPane;
@@ -62,6 +63,7 @@ public class MainFrame extends javax.swing.JFrame {
         btnLaporan = new javax.swing.JButton();
         btnAbout = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
+        btnKontakCS = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
         panelHome = new javax.swing.JPanel();
         panelKasir = new javax.swing.JPanel();
@@ -135,6 +137,14 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        btnKontakCS.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnKontakCS.setText("Kontak CS");
+        btnKontakCS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKontakCSActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
         menuPanelLayout.setHorizontalGroup(
@@ -142,15 +152,19 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(menuPanelLayout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnStok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnKasir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                    .addComponent(btnKontakCS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnStok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnKasir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,9 +181,11 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(btnLaporan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAbout)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnKontakCS)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogout)
-                .addGap(97, 97, 97))
+                .addGap(101, 101, 101))
         );
 
         mainPanel.setBackground(new java.awt.Color(153, 153, 255));
@@ -181,7 +197,7 @@ public class MainFrame extends javax.swing.JFrame {
         panelHome.setLayout(panelHomeLayout);
         panelHomeLayout.setHorizontalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 707, Short.MAX_VALUE)
+            .addGap(0, 738, Short.MAX_VALUE)
         );
         panelHomeLayout.setVerticalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +219,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(panelKasirLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(623, Short.MAX_VALUE))
+                .addContainerGap(654, Short.MAX_VALUE))
         );
         panelKasirLayout.setVerticalGroup(
             panelKasirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,7 +244,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(panelStokLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(557, Short.MAX_VALUE))
+                .addContainerGap(588, Short.MAX_VALUE))
         );
         panelStokLayout.setVerticalGroup(
             panelStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,7 +269,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(panelKaryawanLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(576, Short.MAX_VALUE))
+                .addContainerGap(607, Short.MAX_VALUE))
         );
         panelKaryawanLayout.setVerticalGroup(
             panelKaryawanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,7 +294,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(panelLaporanLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(588, Short.MAX_VALUE))
+                .addContainerGap(619, Short.MAX_VALUE))
         );
         panelLaporanLayout.setVerticalGroup(
             panelLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,6 +436,12 @@ public class MainFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLogoutActionPerformed
 
+    private void btnKontakCSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKontakCSActionPerformed
+        // TODO add your handling code here:
+        ViewKontakCS viewKontakCS = new ViewKontakCS();
+        viewKontakCS.setVisible(true);
+    }//GEN-LAST:event_btnKontakCSActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -461,6 +483,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnKaryawan;
     private javax.swing.JButton btnKasir;
+    private javax.swing.JButton btnKontakCS;
     private javax.swing.JButton btnLaporan;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnStok;
