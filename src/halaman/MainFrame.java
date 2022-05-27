@@ -12,7 +12,9 @@ import halaman.home.HomeView;
 import halaman.about.AboutView;
 import halaman.kontakcs.ViewKontakCS;
 import halaman.laporan.LaporanView1;
+import halaman.login.LoginFrame;
 import java.awt.GridBagLayout;
+import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,9 +42,49 @@ public class MainFrame extends javax.swing.JFrame {
         mainPanel.revalidate();
         mainPanel.add(home);
         
+        setMenu();
+        isLogin();    
+        
 //        this.setExtendedState(JFrame.MAXIMIZED_HORIZ);
 //        this.setVisible(true);
 //        this.setResizable(false);
+    }
+    
+    private void isLogin(){
+        if(!LoginFrame.login){
+            System.exit(0);
+        }
+    }
+    
+    private void setMenu(){
+        btnKaryawan.setVisible(false);
+        btnKasir.setVisible(false);
+        btnLaporan.setVisible(false);
+        btnStok.setVisible(false);
+        
+        switch(LoginFrame.level){
+            case "karyawan"->{
+                btnKaryawan.setVisible(true);
+            }
+            case "kasir"->{
+                btnKasir.setVisible(true);
+            }
+            case "stok"->{
+                btnStok.setVisible(true);
+            }
+            case "laporan"->{
+                btnLaporan.setVisible(true);
+            }
+            case ""->{
+                System.exit(0);
+            }
+            default->{
+                    btnKaryawan.setVisible(true);
+                    btnKasir.setVisible(true);
+                    btnLaporan.setVisible(true);
+                    btnStok.setVisible(true);
+            }
+        }
     }
 
     /**
@@ -366,7 +408,6 @@ public class MainFrame extends javax.swing.JFrame {
         
         // add
         stok = new StokView();
-        
         mainPanel.add(stok);
         mainPanel.repaint();
         mainPanel.revalidate();
