@@ -84,7 +84,7 @@ public class menuKaryawan extends javax.swing.JPanel {
         txtNilaiKaryawan = new javax.swing.JTextField();
         jRadioButton7 = new javax.swing.JRadioButton();
 
-        setBackground(new java.awt.Color(102, 102, 255));
+        setBackground(new java.awt.Color(20, 195, 142));
 
         btnCetakKaryawan.setText("Cetak");
         btnCetakKaryawan.addActionListener(new java.awt.event.ActionListener() {

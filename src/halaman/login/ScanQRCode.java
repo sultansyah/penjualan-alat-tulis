@@ -27,6 +27,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
+import halaman.login.LoginFrame;
 
 /**
  *
@@ -39,6 +40,9 @@ public class ScanQRCode extends javax.swing.JFrame implements Runnable, ThreadFa
     
     private static final long serialVersionUID = 6441489157408381878L;
     private Executor executor = Executors.newSingleThreadExecutor(this);
+    
+    public static Boolean login = false;
+    public static String level = "";
 
     /**
      * Creates new form ScanQRCode
@@ -181,8 +185,13 @@ public class ScanQRCode extends javax.swing.JFrame implements Runnable, ThreadFa
     }
     
     private void jikaBerhasil(String level, Boolean login){
-        LoginFrame.level = "";
-        LoginFrame.login = login;
+        this.level = level;
+        this.login = login;
+        
+        System.out.println("scan");
+        System.out.println(level);
+        System.out.println(login);
+        System.out.println("scan");
         
         MainFrame mainFrame = new MainFrame();
         mainFrame.setVisible(true);

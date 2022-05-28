@@ -95,7 +95,7 @@ public class menuStok extends javax.swing.JPanel {
         txtTanggalAwal = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(102, 102, 255));
+        setBackground(new java.awt.Color(20, 195, 142));
 
         buttonGroupBarang.add(jRadioButton10);
         jRadioButton10.setText("Stok");

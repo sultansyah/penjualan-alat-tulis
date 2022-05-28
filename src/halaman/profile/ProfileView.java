@@ -8,12 +8,12 @@ package halaman.profile;
  *
  * @author sultan
  */
-public class ViewProfile extends javax.swing.JPanel {
+public class ProfileView extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewProfile
+     * Creates new form ProfileView
      */
-    public ViewProfile() {
+    public ProfileView() {
         initComponents();
     }
 
@@ -26,32 +26,21 @@ public class ViewProfile extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-
         setBackground(new java.awt.Color(20, 195, 142));
-
-        jLabel1.setText("profile");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jLabel1)
-                .addContainerGap(684, Short.MAX_VALUE))
+            .addGap(0, 770, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel1)
-                .addContainerGap(522, Short.MAX_VALUE))
+            .addGap(0, 533, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

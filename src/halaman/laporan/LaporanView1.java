@@ -87,7 +87,10 @@ public class LaporanView1 extends javax.swing.JPanel {
         menuPanel.setLayout(menuPanelLayout);
         menuPanelLayout.setHorizontalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(menuPanelLayout.createSequentialGroup()
                     .addGap(19, 19, 19)
@@ -123,7 +126,7 @@ public class LaporanView1 extends javax.swing.JPanel {
         karyawanPanel.setLayout(karyawanPanelLayout);
         karyawanPanelLayout.setHorizontalGroup(
             karyawanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 573, Short.MAX_VALUE)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
         karyawanPanelLayout.setVerticalGroup(
             karyawanPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +141,7 @@ public class LaporanView1 extends javax.swing.JPanel {
         barangPanel.setLayout(barangPanelLayout);
         barangPanelLayout.setHorizontalGroup(
             barangPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 573, Short.MAX_VALUE)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
         barangPanelLayout.setVerticalGroup(
             barangPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +156,7 @@ public class LaporanView1 extends javax.swing.JPanel {
         kasirPanel.setLayout(kasirPanelLayout);
         kasirPanelLayout.setHorizontalGroup(
             kasirPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 573, Short.MAX_VALUE)
+            .addGap(0, 561, Short.MAX_VALUE)
         );
         kasirPanelLayout.setVerticalGroup(
             kasirPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

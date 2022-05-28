@@ -13,10 +13,10 @@ import halaman.about.AboutView;
 import halaman.kontakcs.ViewKontakCS;
 import halaman.laporan.LaporanView1;
 import halaman.login.LoginFrame;
-import halaman.profile.ViewProfile;
+import halaman.profile.ProfileView;
 import java.awt.GridBagLayout;
-import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
+import halaman.login.ScanQRCode;
 
 /**
  *
@@ -30,12 +30,13 @@ public class MainFrame extends javax.swing.JFrame {
     KaryawanView karyawan;
     LaporanView laporan;
     LaporanView1 laporan1;
-    ViewProfile profile;
+    ProfileView profile;
 
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
+        System.out.println(1);
         initComponents();
         home = new HomeView();
         
@@ -53,8 +54,24 @@ public class MainFrame extends javax.swing.JFrame {
     }
     
     private void isLogin(){
-        if(!LoginFrame.login){
-            System.exit(0);
+        System.out.println("login main");
+        System.out.println(LoginFrame.login);
+        System.out.println(LoginFrame.level);
+        System.out.println("login main");
+        
+        System.out.println("scan main");
+        System.out.println(ScanQRCode.login);
+        System.out.println(ScanQRCode.level);
+        System.out.println("scan main");
+        
+        while(true){
+            if(LoginFrame.login){
+                break;
+            } else if(ScanQRCode.login) {
+                break;
+            } else {
+                System.exit(0);
+            }
         }
     }
     
@@ -64,28 +81,55 @@ public class MainFrame extends javax.swing.JFrame {
         btnLaporan.setVisible(false);
         btnStok.setVisible(false);
         
-        switch(LoginFrame.level){
-            case "karyawan"->{
-                btnKaryawan.setVisible(true);
-            }
-            case "kasir"->{
-                btnKasir.setVisible(true);
-            }
-            case "stok"->{
-                btnStok.setVisible(true);
-            }
-            case "laporan"->{
-                btnLaporan.setVisible(true);
-            }
-            case ""->{
-                System.exit(0);
-            }
-            default->{
+        if(!ScanQRCode.level.equals("")){
+            switch(ScanQRCode.level){
+                case "karyawan"->{
                     btnKaryawan.setVisible(true);
+                }
+                case "kasir"->{
                     btnKasir.setVisible(true);
-                    btnLaporan.setVisible(true);
+                }
+                case "stok"->{
                     btnStok.setVisible(true);
-                    btnProfile.setVisible(true);
+                }
+                case "laporan"->{
+                    btnLaporan.setVisible(true);
+                }
+                case ""->{
+                    System.exit(0);
+                }
+                default->{
+                        btnKaryawan.setVisible(true);
+                        btnKasir.setVisible(true);
+                        btnLaporan.setVisible(true);
+                        btnStok.setVisible(true);
+                        btnProfile.setVisible(true);
+                }
+            }
+        } else if(!LoginFrame.level.equals("")){
+            switch(LoginFrame.level){
+                case "karyawan"->{
+                    btnKaryawan.setVisible(true);
+                }
+                case "kasir"->{
+                    btnKasir.setVisible(true);
+                }
+                case "stok"->{
+                    btnStok.setVisible(true);
+                }
+                case "laporan"->{
+                    btnLaporan.setVisible(true);
+                }
+                case ""->{
+                    System.exit(0);
+                }
+                default->{
+                        btnKaryawan.setVisible(true);
+                        btnKasir.setVisible(true);
+                        btnLaporan.setVisible(true);
+                        btnStok.setVisible(true);
+                        btnProfile.setVisible(true);
+                }
             }
         }
     }
@@ -219,13 +263,12 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(btnKontakCS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                     .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                    .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnStok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnKasir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAbout, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)))
+                    .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnStok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnKasir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAbout, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         menuPanelLayout.setVerticalGroup(
@@ -265,7 +308,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         panelHomeLayout.setVerticalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
+            .addGap(0, 629, Short.MAX_VALUE)
         );
 
         mainPanel.add(panelHome, "card2");
@@ -290,7 +333,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(panelKasirLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(508, Short.MAX_VALUE))
+                .addContainerGap(592, Short.MAX_VALUE))
         );
 
         mainPanel.add(panelKasir, "card3");
@@ -315,7 +358,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(panelStokLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(508, Short.MAX_VALUE))
+                .addContainerGap(592, Short.MAX_VALUE))
         );
 
         mainPanel.add(panelStok, "card4");
@@ -340,7 +383,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(panelKaryawanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(508, Short.MAX_VALUE))
+                .addContainerGap(592, Short.MAX_VALUE))
         );
 
         mainPanel.add(panelKaryawan, "card5");
@@ -365,7 +408,7 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(panelLaporanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(508, Short.MAX_VALUE))
+                .addContainerGap(592, Short.MAX_VALUE))
         );
 
         mainPanel.add(panelLaporan, "card6");
@@ -380,7 +423,7 @@ public class MainFrame extends javax.swing.JFrame {
         );
         panelProfileLayout.setVerticalGroup(
             panelProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 545, Short.MAX_VALUE)
+            .addGap(0, 629, Short.MAX_VALUE)
         );
 
         mainPanel.add(panelProfile, "card7");
@@ -528,7 +571,7 @@ public class MainFrame extends javax.swing.JFrame {
         mainPanel.revalidate();
         
         // add
-        profile = new ViewProfile();
+        profile = new ProfileView();
         
         mainPanel.add(profile);
         mainPanel.repaint();
