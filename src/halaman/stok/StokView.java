@@ -128,11 +128,12 @@ public class StokView extends javax.swing.JPanel {
         txtJenisBarang = new javax.swing.JComboBox<>();
         txtTanggalMasuk = new com.toedter.calendar.JDateChooser();
 
-        setBackground(new java.awt.Color(102, 102, 255));
+        setBackground(new java.awt.Color(20, 195, 142));
 
         jLabel5.setText("Stok Barang");
 
         btnSimpan.setText("Simpan");
+        btnSimpan.setBorderPainted(false);
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSimpanActionPerformed(evt);
@@ -140,6 +141,7 @@ public class StokView extends javax.swing.JPanel {
         });
 
         btnEdit.setText("Edit");
+        btnEdit.setBorderPainted(false);
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
@@ -153,6 +155,7 @@ public class StokView extends javax.swing.JPanel {
         });
 
         btnHapus.setText("Hapus");
+        btnHapus.setBorderPainted(false);
         btnHapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHapusActionPerformed(evt);
@@ -162,13 +165,14 @@ public class StokView extends javax.swing.JPanel {
         jLabel6.setText("Harga Barang");
 
         btnBatal.setText("Batal");
+        btnBatal.setBorderPainted(false);
         btnBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBatalActionPerformed(evt);
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(20, 195, 142));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jLabel1.setText("STOK");

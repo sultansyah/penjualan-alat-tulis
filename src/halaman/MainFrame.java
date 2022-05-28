@@ -13,6 +13,7 @@ import halaman.about.AboutView;
 import halaman.kontakcs.ViewKontakCS;
 import halaman.laporan.LaporanView1;
 import halaman.login.LoginFrame;
+import halaman.profile.ViewProfile;
 import java.awt.GridBagLayout;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
@@ -29,6 +30,7 @@ public class MainFrame extends javax.swing.JFrame {
     KaryawanView karyawan;
     LaporanView laporan;
     LaporanView1 laporan1;
+    ViewProfile profile;
 
     /**
      * Creates new form MainFrame
@@ -83,6 +85,7 @@ public class MainFrame extends javax.swing.JFrame {
                     btnKasir.setVisible(true);
                     btnLaporan.setVisible(true);
                     btnStok.setVisible(true);
+                    btnProfile.setVisible(true);
             }
         }
     }
@@ -106,6 +109,7 @@ public class MainFrame extends javax.swing.JFrame {
         btnAbout = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         btnKontakCS = new javax.swing.JButton();
+        btnProfile = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
         panelHome = new javax.swing.JPanel();
         panelKasir = new javax.swing.JPanel();
@@ -116,15 +120,17 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         panelLaporan = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        panelProfile = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bodyPanel.setBackground(new java.awt.Color(153, 153, 153));
 
-        menuPanel.setBackground(new java.awt.Color(102, 102, 255));
+        menuPanel.setBackground(new java.awt.Color(20, 195, 142));
 
         btnHome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnHome.setText("Home");
+        btnHome.setBorderPainted(false);
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHomeActionPerformed(evt);
@@ -133,6 +139,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnStok.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnStok.setText("Stok Barang");
+        btnStok.setBorderPainted(false);
         btnStok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStokActionPerformed(evt);
@@ -141,6 +148,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnKasir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnKasir.setText("Kasir");
+        btnKasir.setBorderPainted(false);
         btnKasir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKasirActionPerformed(evt);
@@ -149,6 +157,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnKaryawan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnKaryawan.setText("Karyawan");
+        btnKaryawan.setBorderPainted(false);
         btnKaryawan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKaryawanActionPerformed(evt);
@@ -157,6 +166,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnLaporan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnLaporan.setText("Laporan");
+        btnLaporan.setBorderPainted(false);
         btnLaporan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLaporanActionPerformed(evt);
@@ -165,6 +175,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnAbout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAbout.setText("About");
+        btnAbout.setBorderPainted(false);
         btnAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAboutActionPerformed(evt);
@@ -173,6 +184,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnLogout.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnLogout.setText("Logout");
+        btnLogout.setBorderPainted(false);
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -181,9 +193,19 @@ public class MainFrame extends javax.swing.JFrame {
 
         btnKontakCS.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnKontakCS.setText("Kontak CS");
+        btnKontakCS.setBorderPainted(false);
         btnKontakCS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKontakCSActionPerformed(evt);
+            }
+        });
+
+        btnProfile.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnProfile.setText("Profile");
+        btnProfile.setBorderPainted(false);
+        btnProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProfileActionPerformed(evt);
             }
         });
 
@@ -193,20 +215,18 @@ public class MainFrame extends javax.swing.JFrame {
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(menuPanelLayout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnKontakCS, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(menuPanelLayout.createSequentialGroup()
-                        .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnStok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnKasir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(btnProfile, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnStok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnKasir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnKaryawan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLaporan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAbout, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         menuPanelLayout.setVerticalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,29 +246,31 @@ public class MainFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnKontakCS)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnProfile)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogout)
-                .addGap(101, 101, 101))
+                .addGap(69, 69, 69))
         );
 
         mainPanel.setBackground(new java.awt.Color(153, 153, 255));
         mainPanel.setLayout(new java.awt.CardLayout());
 
-        panelHome.setBackground(new java.awt.Color(102, 102, 255));
+        panelHome.setBackground(new java.awt.Color(20, 195, 142));
 
         javax.swing.GroupLayout panelHomeLayout = new javax.swing.GroupLayout(panelHome);
         panelHome.setLayout(panelHomeLayout);
         panelHomeLayout.setHorizontalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 738, Short.MAX_VALUE)
+            .addGap(0, 935, Short.MAX_VALUE)
         );
         panelHomeLayout.setVerticalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 533, Short.MAX_VALUE)
+            .addGap(0, 545, Short.MAX_VALUE)
         );
 
         mainPanel.add(panelHome, "card2");
 
-        panelKasir.setBackground(new java.awt.Color(102, 102, 255));
+        panelKasir.setBackground(new java.awt.Color(20, 195, 142));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -261,19 +283,19 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(panelKasirLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(654, Short.MAX_VALUE))
+                .addContainerGap(851, Short.MAX_VALUE))
         );
         panelKasirLayout.setVerticalGroup(
             panelKasirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelKasirLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(489, Short.MAX_VALUE))
+                .addContainerGap(508, Short.MAX_VALUE))
         );
 
         mainPanel.add(panelKasir, "card3");
 
-        panelStok.setBackground(new java.awt.Color(144, 148, 151));
+        panelStok.setBackground(new java.awt.Color(20, 195, 142));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -286,19 +308,19 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(panelStokLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(588, Short.MAX_VALUE))
+                .addContainerGap(785, Short.MAX_VALUE))
         );
         panelStokLayout.setVerticalGroup(
             panelStokLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelStokLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(489, Short.MAX_VALUE))
+                .addContainerGap(508, Short.MAX_VALUE))
         );
 
         mainPanel.add(panelStok, "card4");
 
-        panelKaryawan.setBackground(new java.awt.Color(144, 148, 151));
+        panelKaryawan.setBackground(new java.awt.Color(20, 195, 142));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -311,19 +333,19 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(panelKaryawanLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(607, Short.MAX_VALUE))
+                .addContainerGap(804, Short.MAX_VALUE))
         );
         panelKaryawanLayout.setVerticalGroup(
             panelKaryawanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelKaryawanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(489, Short.MAX_VALUE))
+                .addContainerGap(508, Short.MAX_VALUE))
         );
 
         mainPanel.add(panelKaryawan, "card5");
 
-        panelLaporan.setBackground(new java.awt.Color(144, 148, 151));
+        panelLaporan.setBackground(new java.awt.Color(20, 195, 142));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -336,17 +358,32 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(panelLaporanLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(619, Short.MAX_VALUE))
+                .addContainerGap(816, Short.MAX_VALUE))
         );
         panelLaporanLayout.setVerticalGroup(
             panelLaporanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLaporanLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(489, Short.MAX_VALUE))
+                .addContainerGap(508, Short.MAX_VALUE))
         );
 
         mainPanel.add(panelLaporan, "card6");
+
+        panelProfile.setBackground(new java.awt.Color(20, 195, 142));
+
+        javax.swing.GroupLayout panelProfileLayout = new javax.swing.GroupLayout(panelProfile);
+        panelProfile.setLayout(panelProfileLayout);
+        panelProfileLayout.setHorizontalGroup(
+            panelProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 935, Short.MAX_VALUE)
+        );
+        panelProfileLayout.setVerticalGroup(
+            panelProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 545, Short.MAX_VALUE)
+        );
+
+        mainPanel.add(panelProfile, "card7");
 
         javax.swing.GroupLayout bodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
         bodyPanel.setLayout(bodyPanelLayout);
@@ -483,6 +520,21 @@ public class MainFrame extends javax.swing.JFrame {
         viewKontakCS.setVisible(true);
     }//GEN-LAST:event_btnKontakCSActionPerformed
 
+    private void btnProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfileActionPerformed
+        // TODO add your handling code here:        
+         // remove panel
+        mainPanel.removeAll();
+        mainPanel.repaint();
+        mainPanel.revalidate();
+        
+        // add
+        profile = new ViewProfile();
+        
+        mainPanel.add(profile);
+        mainPanel.repaint();
+        mainPanel.revalidate();
+    }//GEN-LAST:event_btnProfileActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -527,6 +579,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnKontakCS;
     private javax.swing.JButton btnLaporan;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnProfile;
     private javax.swing.JButton btnStok;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -538,6 +591,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JPanel panelKaryawan;
     private javax.swing.JPanel panelKasir;
     private javax.swing.JPanel panelLaporan;
+    private javax.swing.JPanel panelProfile;
     private javax.swing.JPanel panelStok;
     // End of variables declaration//GEN-END:variables
 }

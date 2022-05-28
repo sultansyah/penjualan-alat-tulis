@@ -5,14 +5,11 @@
 package halaman.login;
 import halaman.MainFrame;
 import java.awt.HeadlessException;
-import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import halaman.login.ScanQRCode;
 
@@ -103,12 +100,13 @@ public class LoginFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(59, 172, 182));
+        jPanel1.setBackground(new java.awt.Color(20, 195, 142));
 
         txtPassword.setText("Password");
 
         txtUsername.setText("Username");
 
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +116,10 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jLabel1.setText("Atau login menggunakan QR Code");
 
+<<<<<<< HEAD
+        txtScan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+=======
+>>>>>>> bfde1227384636ba2512d675fdd0e14ee66a1d21
         txtScan.setText("Scan QR Code");
         txtScan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,6 +132,19 @@ public class LoginFrame extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+<<<<<<< HEAD
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(12, 12, 12)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+=======
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtUsername)
@@ -137,11 +152,16 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(96, 96, 96)
                         .addComponent(btnLogin)))
+>>>>>>> bfde1227384636ba2512d675fdd0e14ee66a1d21
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtScan)
+<<<<<<< HEAD
+                .addContainerGap(31, Short.MAX_VALUE))
+=======
                 .addContainerGap(32, Short.MAX_VALUE))
+>>>>>>> bfde1227384636ba2512d675fdd0e14ee66a1d21
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,8 +178,13 @@ public class LoginFrame extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(txtScan))))
                 .addGap(18, 18, 18)
+<<<<<<< HEAD
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(86, Short.MAX_VALUE))
+=======
                 .addComponent(btnLogin)
                 .addContainerGap(104, Short.MAX_VALUE))
+>>>>>>> bfde1227384636ba2512d675fdd0e14ee66a1d21
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -185,6 +210,7 @@ public class LoginFrame extends javax.swing.JFrame {
         if (IsTrue(username, password)){
             MainFrame mainFrame = new MainFrame();
             mainFrame.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -192,6 +218,10 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         ScanQRCode viewScan = new ScanQRCode();
         viewScan.setVisible(true);
+<<<<<<< HEAD
+        this.dispose();
+=======
+>>>>>>> bfde1227384636ba2512d675fdd0e14ee66a1d21
     }//GEN-LAST:event_txtScanActionPerformed
 
     /**

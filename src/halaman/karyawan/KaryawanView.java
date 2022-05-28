@@ -91,7 +91,7 @@ public class KaryawanView extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(102, 102, 255));
+        setBackground(new java.awt.Color(20, 195, 142));
 
         jLabel1.setText("Data Karyawan");
 
@@ -138,6 +138,7 @@ public class KaryawanView extends javax.swing.JPanel {
         });
 
         TSimpan.setText("Simpan");
+        TSimpan.setBorderPainted(false);
         TSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TSimpanActionPerformed(evt);
@@ -145,6 +146,7 @@ public class KaryawanView extends javax.swing.JPanel {
         });
 
         Tedit.setText("Edit");
+        Tedit.setBorderPainted(false);
         Tedit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TeditActionPerformed(evt);
@@ -152,6 +154,7 @@ public class KaryawanView extends javax.swing.JPanel {
         });
 
         Thapus.setText("Hapus");
+        Thapus.setBorderPainted(false);
         Thapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ThapusActionPerformed(evt);
@@ -159,6 +162,7 @@ public class KaryawanView extends javax.swing.JPanel {
         });
 
         Tclear.setText("Clear");
+        Tclear.setBorderPainted(false);
         Tclear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TclearActionPerformed(evt);

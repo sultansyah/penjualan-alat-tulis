@@ -15,18 +15,32 @@ import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import halaman.MainFrame;
+<<<<<<< HEAD
+import java.awt.Dimension;
+import java.awt.image.BufferedImage;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+import halaman.login.LoginFrame;
+import java.awt.HeadlessException;
+=======
 import static halaman.login.LoginFrame.level;
 import static halaman.login.LoginFrame.login;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.image.BufferedImage;
+>>>>>>> bfde1227384636ba2512d675fdd0e14ee66a1d21
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+<<<<<<< HEAD
+import java.util.Arrays;
+=======
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+>>>>>>> bfde1227384636ba2512d675fdd0e14ee66a1d21
 import javax.swing.JOptionPane;
 
 /**
@@ -35,8 +49,11 @@ import javax.swing.JOptionPane;
  */
 public class ScanQRCode extends javax.swing.JFrame implements Runnable, ThreadFactory {
     
+<<<<<<< HEAD
+=======
     Koneksi koneksi = new Koneksi();
     
+>>>>>>> bfde1227384636ba2512d675fdd0e14ee66a1d21
     private WebcamPanel panel = null;
     private Webcam webcam = null;
     
@@ -74,19 +91,33 @@ public class ScanQRCode extends javax.swing.JFrame implements Runnable, ThreadFa
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Arahkan QR Code kesini");
+<<<<<<< HEAD
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel2.setText("Hasil");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+        getContentPane().add(txtHasil, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 98, -1));
+=======
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel2.setText("Hasil");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
         getContentPane().add(txtHasil, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 98, -1));
+>>>>>>> bfde1227384636ba2512d675fdd0e14ee66a1d21
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 102));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("jButton1");
+<<<<<<< HEAD
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 270));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 270, 240));
+=======
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 250));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 310, 250));
+>>>>>>> bfde1227384636ba2512d675fdd0e14ee66a1d21
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -178,13 +209,30 @@ public class ScanQRCode extends javax.swing.JFrame implements Runnable, ThreadFa
             }
 
             if (result != null) {
+<<<<<<< HEAD
+                getData(result.getText());
+=======
                 txtHasil.setText(result.getText());
                 getIdentity(result.getText());
+>>>>>>> bfde1227384636ba2512d675fdd0e14ee66a1d21
             }
         } while (true);
     }
     
+<<<<<<< HEAD
+    private void jikaBerhasil(String level, Boolean login){
+        LoginFrame.level = level;
+        LoginFrame.login = login;
+        
+        MainFrame mainFrame = new MainFrame();
+        mainFrame.setVisible(true);
+        this.dispose();
+    }
+    
+    private void getData(String id_user){
+=======
     public void getIdentity(String id_user){
+>>>>>>> bfde1227384636ba2512d675fdd0e14ee66a1d21
         try {
             Connection c = Koneksi.getKoneksi();
             Statement s = c.createStatement();
@@ -195,6 +243,35 @@ public class ScanQRCode extends javax.swing.JFrame implements Runnable, ThreadFa
 
             if (rs.next()) {
                 if(id_user.equals(rs.getString("id_user"))){
+<<<<<<< HEAD
+                    JOptionPane.showMessageDialog(null, "Berhasil login");
+                    getLevel(rs.getString("id_level"));
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "QR Code tidak terdaftar di sistem, mohon hubungi admin");
+            }
+        } catch (HeadlessException | SQLException ex){
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+        }
+    }
+    
+    private void getLevel(String id_level){
+        try {
+            Connection c = Koneksi.getKoneksi();
+            Statement s = c.createStatement();
+            
+            String sql = "SELECT * FROM level WHERE id_level = '" + id_level + "'";
+            
+            ResultSet rs = s.executeQuery(sql);
+
+            if (rs.next()) {
+                if(id_level.equals(rs.getString("id_level"))){
+                    jikaBerhasil(rs.getString("level"), true);
+                }
+            }
+        } catch (HeadlessException | SQLException ex){
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+=======
                     JOptionPane.showMessageDialog(null, "berhasil login");
                     MainFrame mainFrame = new MainFrame();
                     mainFrame.setVisible(true);
@@ -202,6 +279,7 @@ public class ScanQRCode extends javax.swing.JFrame implements Runnable, ThreadFa
             }
         } catch (HeadlessException | SQLException ex){
             System.out.println(ex);
+>>>>>>> bfde1227384636ba2512d675fdd0e14ee66a1d21
         }
     }
 

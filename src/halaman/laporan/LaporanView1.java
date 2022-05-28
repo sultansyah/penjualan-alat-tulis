@@ -51,10 +51,11 @@ public class LaporanView1 extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(153, 153, 153));
 
-        menuPanel.setBackground(new java.awt.Color(102, 102, 255));
+        menuPanel.setBackground(new java.awt.Color(20, 195, 142));
 
         btnKasir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnKasir.setText("Kasir");
+        btnKasir.setBorderPainted(false);
         btnKasir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKasirActionPerformed(evt);
@@ -63,6 +64,7 @@ public class LaporanView1 extends javax.swing.JPanel {
 
         btnStok.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnStok.setText("Stok Barang");
+        btnStok.setBorderPainted(false);
         btnStok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStokActionPerformed(evt);
@@ -71,6 +73,7 @@ public class LaporanView1 extends javax.swing.JPanel {
 
         btnKaryawan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnKaryawan.setText("Karyawan");
+        btnKaryawan.setBorderPainted(false);
         btnKaryawan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKaryawanActionPerformed(evt);
@@ -84,10 +87,7 @@ public class LaporanView1 extends javax.swing.JPanel {
         menuPanel.setLayout(menuPanelLayout);
         menuPanelLayout.setHorizontalGroup(
             menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(menuPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
             .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(menuPanelLayout.createSequentialGroup()
                     .addGap(19, 19, 19)
@@ -117,7 +117,7 @@ public class LaporanView1 extends javax.swing.JPanel {
         mainPanel.setBackground(new java.awt.Color(102, 102, 255));
         mainPanel.setLayout(new java.awt.CardLayout());
 
-        karyawanPanel.setBackground(new java.awt.Color(102, 102, 255));
+        karyawanPanel.setBackground(new java.awt.Color(20, 195, 142));
 
         javax.swing.GroupLayout karyawanPanelLayout = new javax.swing.GroupLayout(karyawanPanel);
         karyawanPanel.setLayout(karyawanPanelLayout);
@@ -132,7 +132,7 @@ public class LaporanView1 extends javax.swing.JPanel {
 
         mainPanel.add(karyawanPanel, "card2");
 
-        barangPanel.setBackground(new java.awt.Color(102, 102, 255));
+        barangPanel.setBackground(new java.awt.Color(20, 195, 142));
 
         javax.swing.GroupLayout barangPanelLayout = new javax.swing.GroupLayout(barangPanel);
         barangPanel.setLayout(barangPanelLayout);
@@ -146,6 +146,8 @@ public class LaporanView1 extends javax.swing.JPanel {
         );
 
         mainPanel.add(barangPanel, "card3");
+
+        kasirPanel.setBackground(new java.awt.Color(20, 195, 142));
 
         javax.swing.GroupLayout kasirPanelLayout = new javax.swing.GroupLayout(kasirPanel);
         kasirPanel.setLayout(kasirPanelLayout);
