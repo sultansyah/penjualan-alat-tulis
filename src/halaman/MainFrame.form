@@ -82,14 +82,12 @@
                           <Component id="btnKontakCS" max="32767" attributes="0"/>
                           <Component id="btnProfile" pref="115" max="32767" attributes="0"/>
                           <Component id="btnLogout" pref="115" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="btnHome" max="32767" attributes="0"/>
-                              <Component id="btnStok" max="32767" attributes="0"/>
-                              <Component id="btnKasir" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnKaryawan" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnLaporan" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnAbout" alignment="0" pref="115" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="btnHome" max="32767" attributes="0"/>
+                          <Component id="btnStok" max="32767" attributes="0"/>
+                          <Component id="btnKasir" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnKaryawan" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnLaporan" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnAbout" alignment="0" pref="115" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
