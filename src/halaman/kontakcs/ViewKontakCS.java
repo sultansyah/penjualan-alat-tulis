@@ -6,6 +6,7 @@ package halaman.kontakcs;
 
 import java.net.*;
 import java.io.*;
+import javax.swing.JFrame;
 
 /**
  *
@@ -61,11 +62,19 @@ public class ViewKontakCS extends javax.swing.JFrame {
      */
     public ViewKontakCS() {
         initComponents();
+        
+        this.setExtendedState(JFrame.MAXIMIZED_HORIZ);
+        this.setVisible(true);
+        this.setResizable(false);
     }
     
     public ViewKontakCS(String hostname, int port) {        
         this.hostname = hostname;
         this.port = port;
+        
+        this.setExtendedState(JFrame.MAXIMIZED_HORIZ);
+        this.setVisible(true);
+        this.setResizable(false);
     }
 
     /**
