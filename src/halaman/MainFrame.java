@@ -14,6 +14,7 @@ import halaman.kontakcs.ViewKontakCS;
 import halaman.laporan.LaporanView1;
 import halaman.login.LoginFrame;
 import halaman.profile.ProfileView;
+import halaman.profile.ProfileView1;
 import java.awt.GridBagLayout;
 import javax.swing.JOptionPane;
 import halaman.login.ScanQRCode;
@@ -31,6 +32,9 @@ public class MainFrame extends javax.swing.JFrame {
     LaporanView laporan;
     LaporanView1 laporan1;
     ProfileView profile;
+    ProfileView1 profile1;
+    
+    public static String id_user;
 
     /**
      * Creates new form MainFrame
@@ -571,9 +575,9 @@ public class MainFrame extends javax.swing.JFrame {
         mainPanel.revalidate();
         
         // add
-        profile = new ProfileView();
+        profile1 = new ProfileView1();
         
-        mainPanel.add(profile);
+        mainPanel.add(profile1);
         mainPanel.repaint();
         mainPanel.revalidate();
     }//GEN-LAST:event_btnProfileActionPerformed

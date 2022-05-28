@@ -210,6 +210,7 @@ public class ScanQRCode extends javax.swing.JFrame implements Runnable, ThreadFa
             if (rs.next()) {
                 if(id_user.equals(rs.getString("id_user"))){
                     JOptionPane.showMessageDialog(null, "Berhasil login");
+                    MainFrame.id_user = rs.getString("id_user");
                     getLevel(rs.getString("id_level"));
                 }
             } else {

@@ -69,6 +69,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 if(username.equals(rs.getString("username")) && password.equals(rs.getString("password"))){
                     JOptionPane.showMessageDialog(null, "berhasil login");
                     isTrue = true;
+                    MainFrame.id_user = rs.getString("id_user");
                     
                     setLevel(rs.getString("id_level"));
                 }
@@ -102,9 +103,19 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(20, 195, 142));
 
-        txtPassword.setText("Password");
+        txtPassword.setText("sultan");
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
 
-        txtUsername.setText("Username");
+        txtUsername.setText("sultan");
+        txtUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsernameActionPerformed(evt);
+            }
+        });
 
         btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnLogin.setText("Login");
@@ -195,6 +206,14 @@ public class LoginFrame extends javax.swing.JFrame {
         ScanQRCode viewScan = new ScanQRCode();
         viewScan.setVisible(true);
     }//GEN-LAST:event_txtScanActionPerformed
+
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsernameActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
 
     /**
      * @param args the command line arguments
