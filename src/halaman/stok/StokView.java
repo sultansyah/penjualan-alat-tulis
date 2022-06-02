@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import halaman.GenerateQRCode;
 /**
  *
  * @author sultan
@@ -274,7 +275,7 @@ public class StokView extends javax.swing.JPanel {
                             .addComponent(txtTanggalMasuk, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
                         .addGap(28, 28, 28)
                         .addComponent(btnSimpan)))
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,6 +343,9 @@ public class StokView extends javax.swing.JPanel {
             loadData();
             autonumber();
             clear();
+            
+            // generate qrcode
+            GenerateQRCode generateQRCode = new GenerateQRCode(id, "barang");
         } catch (SQLException e) {
             System.out.println(e);
         }
