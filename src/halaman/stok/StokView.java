@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import halaman.GenerateQRCode;
+import halaman.GenerateQRCodeFrame;
 /**
  *
  * @author sultan
@@ -345,7 +345,7 @@ public class StokView extends javax.swing.JPanel {
             clear();
             
             // generate qrcode
-            GenerateQRCode generateQRCode = new GenerateQRCode(id, "barang");
+            GenerateQRCodeFrame generateQRCode = new GenerateQRCodeFrame(id, "barang");
         } catch (SQLException e) {
             System.out.println(e);
         }

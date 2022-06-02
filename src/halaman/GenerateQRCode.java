@@ -51,7 +51,9 @@ public class GenerateQRCode {
             frame.add(label);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.pack();
-            frame.setVisible(true);    
+            frame.setVisible(true);
+            
+            frame.setExtendedState(JFrame.MAXIMIZED_HORIZ);
         } catch(WriterException | HeadlessException | IOException e){
             System.out.println(e);
         }
