@@ -14,7 +14,7 @@ import net.proteanit.sql.DbUtils;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class KaryawanView extends javax.swing.JPanel {
+public class ManageKaryawanView extends javax.swing.JPanel {
  // Script variable statment
         Connection con = null;
 	ResultSet rs = null;
@@ -54,7 +54,7 @@ public class KaryawanView extends javax.swing.JPanel {
          jTextField3.setText(null);
     }
          
-    public KaryawanView() {
+    public ManageKaryawanView() {
         initComponents();
         koneksi();   //memanggil fungsi koneksi
         display(); // menggil fungsi dislay untuk menampilkan data ke table
@@ -83,7 +83,9 @@ public class KaryawanView extends javax.swing.JPanel {
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
-        TSimpan = new javax.swing.JButton();
+        Tedit = new javax.swing.JButton();
+        Thapus = new javax.swing.JButton();
+        Tclear = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         txtCari = new javax.swing.JTextField();
@@ -135,11 +137,27 @@ public class KaryawanView extends javax.swing.JPanel {
             }
         });
 
-        TSimpan.setText("Simpan");
-        TSimpan.setBorderPainted(false);
-        TSimpan.addActionListener(new java.awt.event.ActionListener() {
+        Tedit.setText("Edit");
+        Tedit.setBorderPainted(false);
+        Tedit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TSimpanActionPerformed(evt);
+                TeditActionPerformed(evt);
+            }
+        });
+
+        Thapus.setText("Hapus");
+        Thapus.setBorderPainted(false);
+        Thapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ThapusActionPerformed(evt);
+            }
+        });
+
+        Tclear.setText("Clear");
+        Tclear.setBorderPainted(false);
+        Tclear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TclearActionPerformed(evt);
             }
         });
 
@@ -202,7 +220,13 @@ public class KaryawanView extends javax.swing.JPanel {
                                     .addComponent(jTextField3)
                                     .addComponent(jTextField4)
                                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(TSimpan)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(78, 78, 78)
+                                .addComponent(Tedit)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Thapus)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Tclear))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(209, Short.MAX_VALUE))
         );
@@ -240,14 +264,17 @@ public class KaryawanView extends javax.swing.JPanel {
                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TSimpan)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Tedit)
+                    .addComponent(Thapus)
+                    .addComponent(Tclear))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -271,22 +298,38 @@ public class KaryawanView extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6ActionPerformed
 
-    private void TSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TSimpanActionPerformed
+    private void TeditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TeditActionPerformed
         // TODO add your handling code here:
-         try{
+        try{
             koneksi();
             statBrg = con.createStatement();
-            String SQL = "insert into karyawan values('"+jTextField1.getText()+"','"+jTextField2.getText()+"','"+jTextField3.getText()+"','"+jTextField4.getText()+"','"+jTextField5.getText()+"','"+jTextField6.getText()+"')";
+            String SQL = "update karyawan SET id_karyawan = '"+jTextField1.getText()+"', nama_karyawan = '"+jTextField2.getText()+"', jenis_kelamin = '"+jTextField3.getText()+"', jabatan = '"+jTextField4.getText()+"', no_hp = '"+jTextField5.getText()+"', alamat = '"+jTextField6.getText()+"' WHERE id_karyawan = '"+jTextField1.getText()+"'";
             statBrg.executeUpdate(SQL);
             display();
             statBrg.close();
             con.close();
             Clear();
-            JOptionPane.showMessageDialog(null, "berhasil simpan");
+            JOptionPane.showMessageDialog(null, "berhasil edit");
         } catch(Exception exc){
-           System.err.println(exc.getMessage()); 
+            System.err.println(exc.getMessage());
         }
-    }//GEN-LAST:event_TSimpanActionPerformed
+    }//GEN-LAST:event_TeditActionPerformed
+
+    private void ThapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThapusActionPerformed
+        // TODO add your handling code here:
+          try{
+            koneksi();
+            statBrg = con.createStatement();
+            String SQL = "DELETE FROM karyawan WHERE id_karyawan = '"+jTextField1.getText()+"'";
+            statBrg.executeUpdate(SQL);
+            display();
+            statBrg.close();
+            con.close();
+            JOptionPane.showMessageDialog(null, "berhasil hapus");
+        }catch (Exception exc){
+            System.err.println(exc.getMessage());
+        }
+    }//GEN-LAST:event_ThapusActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
@@ -315,6 +358,11 @@ public class KaryawanView extends javax.swing.JPanel {
         } catch (Exception e) {}
         
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void TclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TclearActionPerformed
+        // TODO add your handling code here:
+        Clear();
+    }//GEN-LAST:event_TclearActionPerformed
 
     private void txtCariKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCariKeyTyped
         // TODO add your handling code here:
@@ -376,7 +424,9 @@ public class KaryawanView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton TSimpan;
+    private javax.swing.JButton Tclear;
+    private javax.swing.JButton Tedit;
+    private javax.swing.JButton Thapus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
