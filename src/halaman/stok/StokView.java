@@ -346,6 +346,7 @@ public class StokView extends javax.swing.JPanel {
             
             // generate qrcode
             GenerateQRCodeFrame generateQRCode = new GenerateQRCodeFrame(id, "barang");
+            generateQRCode.setVisible(true);
         } catch (SQLException e) {
             System.out.println(e);
         }

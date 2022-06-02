@@ -8,7 +8,9 @@ package halaman.karyawan;
  *
  * @author sultan
  */
+import halaman.GenerateQRCodeFrame;
 import halaman.stok.Koneksi;
+import java.awt.HeadlessException;
 import java.sql.*;
 import net.proteanit.sql.DbUtils;
 import javax.swing.JOptionPane;
@@ -49,7 +51,6 @@ public class KaryawanView extends javax.swing.JPanel {
         }
     }
          private void Clear(){
-         jTextField1.setText(null);
          jTextField2.setText(null);
          jTextField3.setText(null);
     }
@@ -71,13 +72,11 @@ public class KaryawanView extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
@@ -88,12 +87,12 @@ public class KaryawanView extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         txtCari = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
+        txtLevel = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(20, 195, 142));
 
         jLabel1.setText("Data Karyawan");
-
-        jLabel2.setText("ID Karyawan");
 
         jLabel3.setText("Nama Karyawan");
 
@@ -169,6 +168,10 @@ public class KaryawanView extends javax.swing.JPanel {
 
         jLabel8.setText("Cari Karyawan");
 
+        txtLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "stok", "karyawan", "bos", "kasir" }));
+
+        jLabel9.setText("Level");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -188,7 +191,6 @@ public class KaryawanView extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,10 +200,13 @@ public class KaryawanView extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jTextField5)
                                     .addComponent(jTextField2)
-                                    .addComponent(jTextField1)
                                     .addComponent(jTextField3)
                                     .addComponent(jTextField4)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(60, 60, 60)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(TSimpan)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(209, Short.MAX_VALUE))
@@ -211,15 +216,13 @@ public class KaryawanView extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1)
-                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(55, 55, 55)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -228,11 +231,14 @@ public class KaryawanView extends javax.swing.JPanel {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel9)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,7 +253,7 @@ public class KaryawanView extends javax.swing.JPanel {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -274,16 +280,54 @@ public class KaryawanView extends javax.swing.JPanel {
     private void TSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TSimpanActionPerformed
         // TODO add your handling code here:
          try{
+             Statement s;
+            ResultSet r;
+            String sql = "";
             koneksi();
             statBrg = con.createStatement();
-            String SQL = "insert into karyawan values('"+jTextField1.getText()+"','"+jTextField2.getText()+"','"+jTextField3.getText()+"','"+jTextField4.getText()+"','"+jTextField5.getText()+"','"+jTextField6.getText()+"')";
-            statBrg.executeUpdate(SQL);
+            
+            String nama = jTextField2.getText();
+            String jenis_kelamin = jTextField3.getText();
+            String jabatan = jTextField4.getText();
+            String no_hp = jTextField5.getText();
+            String alamat = jTextField6.getText();
+            String level = (String) txtLevel.getSelectedItem();
+            String id_level = "";
+            String id_user = "";
+            
+            sql = "select * from level where level = '" + level + "'";
+             s = con.createStatement();
+             r = s.executeQuery(sql);
+                while (r.next()) {
+                    id_level = r.getString("id_level");
+                }
+            
+            sql = "INSERT INTO user (username, password, id_level) VALUES ('" + nama + "', '" + nama + "', '" + id_level + "')";
+            
+            statBrg.executeUpdate(sql);
+            
+            sql = "SELECT * FROM user ORDER BY id_user DESC LIMIT 1";
+            s = con.createStatement();
+            r = s.executeQuery(sql);
+
+                while (r.next()) {
+                    id_user = r.getString("id_user");
+                }
+            
+            
+            sql = "INSERT INTO karyawan (id_user, nama_karyawan, jenis_kelamin, jabatan, no_hp, alamat) VALUES ('" + id_user + "', '" + nama + "', '" + jenis_kelamin + "', '" + jabatan + "', '" + no_hp + "', '" + alamat + "')";
+            statBrg.executeUpdate(sql);
+            
             display();
             statBrg.close();
             con.close();
             Clear();
             JOptionPane.showMessageDialog(null, "berhasil simpan");
-        } catch(Exception exc){
+            
+            GenerateQRCodeFrame generateqr = new GenerateQRCodeFrame(id_user, "karyawan");
+            generateqr.setVisible(true);
+            
+        } catch(HeadlessException | SQLException exc){
            System.err.println(exc.getMessage()); 
         }
     }//GEN-LAST:event_TSimpanActionPerformed
@@ -291,28 +335,26 @@ public class KaryawanView extends javax.swing.JPanel {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         // TODO add your handling code here:
-        try {
-            koneksi();
-            int row =jTable1.getSelectedRow();
-            String tabel_klik=(jTable1.getModel().getValueAt(row, 0).toString());
-            java.sql.Statement stm = con.createStatement();
-            java.sql.ResultSet sql = stm.executeQuery("select * from karyawan where id_karyawan='"+tabel_klik+"'");
-            if(sql.next()){
-                String karyawan = sql.getString("id_karyawan");
-                jTextField1.setText(karyawan);
-                String nama = sql.getString("nama_karyawan");
-                jTextField2.setText(nama);
-                String jeniskelamin = sql.getString("jenis_kelamin");
-                jTextField3.setText(jeniskelamin);
-                String jabatan = sql.getString("jabatan");
-                jTextField4.setText(jabatan);
-                String nohp = sql.getString("no_hp");
-                jTextField5.setText(nohp);
-                String alamat = sql.getString("alamat");
-                jTextField6.setText(alamat);
-                
-            }
-        } catch (Exception e) {}
+//        try {
+//            koneksi();
+//            int row =jTable1.getSelectedRow();
+//            String tabel_klik=(jTable1.getModel().getValueAt(row, 0).toString());
+//            java.sql.Statement stm = con.createStatement();
+//            java.sql.ResultSet sql = stm.executeQuery("select * from karyawan where id_karyawan='"+tabel_klik+"'");
+//            if(sql.next()){
+//                String nama = sql.getString("nama_karyawan");
+//                jTextField2.setText(nama);
+//                String jeniskelamin = sql.getString("jenis_kelamin");
+//                jTextField3.setText(jeniskelamin);
+//                String jabatan = sql.getString("jabatan");
+//                jTextField4.setText(jabatan);
+//                String nohp = sql.getString("no_hp");
+//                jTextField5.setText(nohp);
+//                String alamat = sql.getString("alamat");
+//                jTextField6.setText(alamat);
+//                
+//            }
+//        } catch (Exception e) {}
         
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -378,21 +420,21 @@ public class KaryawanView extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton TSimpan;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField txtCari;
+    private javax.swing.JComboBox<String> txtLevel;
     // End of variables declaration//GEN-END:variables
 }

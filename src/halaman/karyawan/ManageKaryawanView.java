@@ -58,6 +58,7 @@ public class ManageKaryawanView extends javax.swing.JPanel {
         initComponents();
         koneksi();   //memanggil fungsi koneksi
         display(); // menggil fungsi dislay untuk menampilkan data ke table
+        jTextField1.setEditable(false);
     }
     
 

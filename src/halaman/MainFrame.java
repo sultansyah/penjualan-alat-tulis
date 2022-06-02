@@ -42,7 +42,6 @@ public class MainFrame extends javax.swing.JFrame {
      * Creates new form MainFrame
      */
     public MainFrame() {
-        System.out.println(1);
         initComponents();
         home = new HomeView();
         
@@ -59,17 +58,7 @@ public class MainFrame extends javax.swing.JFrame {
 //        this.setResizable(false);
     }
     
-    private void isLogin(){
-        System.out.println("login main");
-        System.out.println(LoginFrame.login);
-        System.out.println(LoginFrame.level);
-        System.out.println("login main");
-        
-        System.out.println("scan main");
-        System.out.println(ScanQRCode.login);
-        System.out.println(ScanQRCode.level);
-        System.out.println("scan main");
-        
+    private void isLogin(){        
         while(true){
             if(LoginFrame.login){
                 break;

@@ -31,6 +31,10 @@ public class GenerateQRCodeFrame extends javax.swing.JFrame {
      */
     public GenerateQRCodeFrame(String id, String modul) {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_HORIZ);
+        this.setVisible(true);
+        this.setResizable(false);
+        
         generateQR(id, modul);
     }
     
@@ -55,13 +59,9 @@ public class GenerateQRCodeFrame extends javax.swing.JFrame {
             MatrixToImageWriter.writeToFile(matrix, filePath.substring(filePath.lastIndexOf('.')+1),new File(filePath));
             System.out.println("Qr code has been generated at the location " + filePath);
             
-            this.setVisible(true);
-            
             ImageIcon icon = new ImageIcon("C:\\Users\\sultan\\OneDrive\\Dokumen\\NetBeansProjects\\penjualan-alat-tulis\\qrcode\\" + modul  + "\\" + name + ".png");
             
             gambar.setIcon(icon);
-            
-//            frame.setExtendedState(JFrame.MAXIMIZED_HORIZ);
         } catch(WriterException | HeadlessException | IOException e){
             System.out.println(e);
         }
