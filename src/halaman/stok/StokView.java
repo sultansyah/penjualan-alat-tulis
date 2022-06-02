@@ -345,6 +345,7 @@ public class StokView extends javax.swing.JPanel {
         } catch (SQLException e) {
             System.out.println(e);
         }
+        loadData();
     // GEN-LAST:event_btnSimpanActionPerformed
     }//GEN-LAST:event_btnSimpanActionPerformed
 
@@ -433,33 +434,33 @@ public class StokView extends javax.swing.JPanel {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-        btnSimpan.setEnabled(false);
-        int i = jTable1.getSelectedRow();
-        if (i == -1) {
-            return;
-        }
-
-        String id = (String) model.getValueAt(i, 0);
-        txtIDBarang.setText(id);
-        String nama = (String) model.getValueAt(i, 1);
-        txtNamaBarang.setText(nama);
-        System.out.println(nama);
-        String jenis = (String) model.getValueAt(i, 2);
-        txtJenisBarang.setSelectedItem(jenis);
-        System.out.println(jenis);
-        String stok = (String) model.getValueAt(i, 3);
-        txtStokBarang.setText(stok);
-        String harga = (String) model.getValueAt(i, 4);
-        txtHargaBarang.setText(harga);
-
-        String tgl_masuk = (String) jTable1.getModel().getValueAt(i, 5);
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-M-dd");
-        try {
-            java.util.Date d = f.parse(tgl_masuk);
-            txtTanggalMasuk.setDate(d);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+//        btnSimpan.setEnabled(false);
+//        int i = jTable1.getSelectedRow();
+//        if (i == -1) {
+//            return;
+//        }
+//
+//        String id = (String) model.getValueAt(i, 0);
+//        txtIDBarang.setText(id);
+//        String nama = (String) model.getValueAt(i, 1);
+//        txtNamaBarang.setText(nama);
+//        System.out.println(nama);
+//        String jenis = (String) model.getValueAt(i, 2);
+//        txtJenisBarang.setSelectedItem(jenis);
+//        System.out.println(jenis);
+//        String stok = (String) model.getValueAt(i, 3);
+//        txtStokBarang.setText(stok);
+//        String harga = (String) model.getValueAt(i, 4);
+//        txtHargaBarang.setText(harga);
+//
+//        String tgl_masuk = (String) jTable1.getModel().getValueAt(i, 5);
+//        SimpleDateFormat f = new SimpleDateFormat("yyyy-M-dd");
+//        try {
+//            java.util.Date d = f.parse(tgl_masuk);
+//            txtTanggalMasuk.setDate(d);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
     // GEN-LAST:event_jTable1MouseClicked
     }//GEN-LAST:event_jTable1MouseClicked
 

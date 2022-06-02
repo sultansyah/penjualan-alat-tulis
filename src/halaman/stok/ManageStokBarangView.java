@@ -17,28 +17,7 @@ public class ManageStokBarangView extends javax.swing.JPanel {
     Koneksi koneksi = new Koneksi();
 
     private DefaultTableModel model;
-
-    // method untuk membuat id otomatis
-    private void autonumber() {
-        try {
-            Connection c = Koneksi.getKoneksi();
-            Statement s = c.createStatement();
-            String sql = "SELECT MAX(id_barang) as jumlah_barang FROM stok_barang";
-            ResultSet r = s.executeQuery(sql);
-            if (r.next()) {
-                int Noint = r.getInt("jumlah_barang") + 1;
-                String No = Integer.toString(Noint);
-                txtIDBarang.setText(No);
-            } else {
-                txtIDBarang.setText("1");
-            }
-            r.close();
-            s.close();
-        } catch (Exception e) {
-            System.out.println("autonumber error");
-        }
-    }
-
+    
     public void clear() {
         txtNamaBarang.setText("");
         txtHargaBarang.setText("");
@@ -94,7 +73,6 @@ public class ManageStokBarangView extends javax.swing.JPanel {
         model.addColumn("Tanggal Masuk");
 
         loadData();
-        autonumber();
     }
 
 
@@ -239,6 +217,9 @@ public class ManageStokBarangView extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTable1MouseEntered(evt);
+            }
         });
         jScrollPane1.setViewportView(jTable1);
 
@@ -378,7 +359,6 @@ public class ManageStokBarangView extends javax.swing.JPanel {
             System.out.println("Edit Error");
         } finally {
             loadData();
-            autonumber();
         }
 
         // GEN-LAST:event_btnEditActionPerformed
@@ -413,7 +393,6 @@ public class ManageStokBarangView extends javax.swing.JPanel {
             }
         }
         loadData();
-        autonumber();
         clear();
 
         if (pertanyaan == JOptionPane.CANCEL_OPTION) {
@@ -425,7 +404,6 @@ public class ManageStokBarangView extends javax.swing.JPanel {
         // TODO add your handling code here:
         clear();
         loadData();
-        autonumber();
         // GEN-LAST:event_btnBatalActionPerformed
     }//GEN-LAST:event_btnBatalActionPerformed
 
@@ -538,6 +516,10 @@ public class ManageStokBarangView extends javax.swing.JPanel {
     private void txtJenisBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtJenisBarangActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtJenisBarangActionPerformed
+
+    private void jTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1MouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
