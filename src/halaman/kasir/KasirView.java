@@ -15,6 +15,7 @@ public class KasirView extends javax.swing.JPanel {
      */
     public KasirView() {
         initComponents();
+        int a;
     }
 
     /**
