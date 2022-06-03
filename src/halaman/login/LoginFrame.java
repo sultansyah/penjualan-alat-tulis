@@ -66,7 +66,7 @@ public class LoginFrame extends javax.swing.JFrame {
             ResultSet rs = s.executeQuery(sql);
 
             if (rs.next()) {
-                if(username.equals(rs.getString("username")) && password.equals(rs.getString("password"))){
+                if(username.equals(rs.getString("username")) && password.equals(rs.getString("password")) && rs.getString("isAktif").equals("true")){
                     JOptionPane.showMessageDialog(null, "berhasil login");
                     isTrue = true;
                     MainFrame.id_user = rs.getString("id_user");

@@ -10,6 +10,7 @@ import halaman.kasir.KasirView;
 import halaman.karyawan.KaryawanView;
 import halaman.home.HomeView;
 import halaman.about.AboutView;
+import halaman.karyawan.ManageKaryawanView;
 import halaman.kontakcs.ViewKontakCS;
 import halaman.laporan.LaporanView1;
 import halaman.login.LoginFrame;
@@ -31,6 +32,7 @@ public class MainFrame extends javax.swing.JFrame {
     StokView stok;
     ManageStokBarangView manageStokBarang;
     KaryawanView karyawan;
+    ManageKaryawanView manageKaryawan;
     LaporanView laporan;
     LaporanView1 laporan1;
     ProfileView profile;
@@ -625,9 +627,9 @@ public class MainFrame extends javax.swing.JFrame {
         mainPanel.revalidate();
         
         // add
-//        profile1 = new ManageKaryawan();
+        manageKaryawan = new ManageKaryawanView();
         
-        mainPanel.add(profile1);
+        mainPanel.add(manageKaryawan);
         mainPanel.repaint();
         mainPanel.revalidate();
     }//GEN-LAST:event_btnManageKaryawanActionPerformed

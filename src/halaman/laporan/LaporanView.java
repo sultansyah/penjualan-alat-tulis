@@ -338,7 +338,7 @@ public class LaporanView extends javax.swing.JPanel {
             // TODO add your handling code here:
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/penjualan-alat-tulis", "root", "");
-            JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\sultan\\Documents\\NetBeansProjects\\penjualan-alat-tulis\\src\\halaman\\laporan\\laporanKaryawan.jrxml");
+            JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\sultan\\OneDrive\\Dokumen\\NetBeansProjects\\penjualan-alat-tulis\\src\\halaman\\laporan\\laporanKaryawan.jrxml");
 
             String selectedButton;
             String query;
