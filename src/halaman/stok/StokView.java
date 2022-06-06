@@ -56,13 +56,14 @@ public class StokView extends javax.swing.JPanel {
             ResultSet r = s.executeQuery(sql);
 
             while (r.next()) {
-                Object[] o = new Object[6];
+                Object[] o = new Object[7];
                 o[0] = r.getString("id_barang");
                 o[1] = r.getString("nama_barang");
                 o[2] = r.getString("jenis_barang");
                 o[3] = r.getString("stok_barang");
-                o[4] = r.getString("harga_barang");
-                o[5] = r.getString("tgl_masuk");
+                o[4] = r.getString("harga_jual");
+                o[5] = r.getString("harga_beli");
+                o[6] = r.getString("tgl_masuk");
 
                 model.addRow(o);
             }
@@ -90,7 +91,8 @@ public class StokView extends javax.swing.JPanel {
         model.addColumn("Nama");
         model.addColumn("Jenis");
         model.addColumn("Stok");
-        model.addColumn("Harga");
+        model.addColumn("Harga Jual");
+        model.addColumn("Harga Beli");
         model.addColumn("Tanggal Masuk");
 
         loadData();
@@ -125,6 +127,8 @@ public class StokView extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txtJenisBarang = new javax.swing.JComboBox<>();
         txtTanggalMasuk = new com.toedter.calendar.JDateChooser();
+        jLabel9 = new javax.swing.JLabel();
+        txtHargaBeli = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(20, 195, 142));
 
@@ -144,7 +148,7 @@ public class StokView extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setText("Harga Barang");
+        jLabel6.setText("Harga Jual");
 
         jPanel1.setBackground(new java.awt.Color(20, 195, 142));
 
@@ -231,51 +235,58 @@ public class StokView extends javax.swing.JPanel {
             }
         });
 
+        jLabel9.setText("Harga Beli");
+
+        txtHargaBeli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHargaBeliActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCariBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(txtHargaBeli, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel9))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtIDBarang)
+                                .addComponent(txtNamaBarang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                                .addComponent(txtHargaBarang, javax.swing.GroupLayout.Alignment.TRAILING)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel8))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel6)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtIDBarang)
-                            .addComponent(txtNamaBarang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                            .addComponent(txtHargaBarang, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtCariBarang))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
-                                .addGap(27, 27, 27))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtStokBarang)
-                            .addComponent(txtJenisBarang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtTanggalMasuk, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
-                        .addGap(28, 28, 28)
-                        .addComponent(btnSimpan)))
-                .addContainerGap(279, Short.MAX_VALUE))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtStokBarang)
+                    .addComponent(txtJenisBarang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtTanggalMasuk, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(btnSimpan)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,23 +305,24 @@ public class StokView extends javax.swing.JPanel {
                     .addComponent(txtNamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(txtJenisBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtCariBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtTanggalMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtHargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel7)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtTanggalMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtHargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel7)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtHargaBeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txtCariBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -319,7 +331,8 @@ public class StokView extends javax.swing.JPanel {
         String id = txtIDBarang.getText();
         String nama = txtNamaBarang.getText();
         String jenis = (String) txtJenisBarang.getSelectedItem();
-        String harga = txtHargaBarang.getText();
+        String hargaJual = txtHargaBarang.getText();
+        String hargaBeli = txtHargaBeli.getText();
         String stok = txtStokBarang.getText();
 
         String tampilan = "yyyy-MM-dd";
@@ -328,14 +341,15 @@ public class StokView extends javax.swing.JPanel {
 
         try {
             Connection c = Koneksi.getKoneksi();
-            String sql = "INSERT INTO stok_barang VALUES (?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO stok_barang VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement p = c.prepareStatement(sql);
             p.setString(1, id);
             p.setString(2, nama);
             p.setString(3, jenis);
             p.setString(4, stok);
-            p.setString(5, harga);
-            p.setString(6, tgl_masuk);
+            p.setString(5, hargaJual);
+            p.setString(6, hargaBeli);
+            p.setString(7, tgl_masuk);
 
             p.executeUpdate();
             p.close();
@@ -382,7 +396,8 @@ public class StokView extends javax.swing.JPanel {
         tabel.addColumn("Nama");
         tabel.addColumn("Jenis");
         tabel.addColumn("Stok");
-        tabel.addColumn("Harga");
+        tabel.addColumn("Harga Jual");
+        tabel.addColumn("Harga Beli");
         tabel.addColumn("Tanggal Masuk");
         
         if(txtCariBarang.getText().length() == 0){
@@ -399,12 +414,13 @@ public class StokView extends javax.swing.JPanel {
                             r.getString(3),
                             r.getString(4),
                             r.getString(5),
-                            r.getString(6)
+                            r.getString(6),
+                            r.getString(7)
                     });
                 }
                 jTable1.setModel(tabel);
                 loadData();
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 System.out.println("Pencarian Data Waktu Nilai Kosong Error");
             }
         } else {
@@ -421,7 +437,8 @@ public class StokView extends javax.swing.JPanel {
                             r.getString(3),
                             r.getString(4),
                             r.getString(5),
-                            r.getString(6)
+                            r.getString(6),
+                            r.getString(7)
                     });
                 }
                 jTable1.setModel(tabel);
@@ -469,6 +486,10 @@ public class StokView extends javax.swing.JPanel {
     // GEN-LAST:event_jTable1MouseClicked
     }//GEN-LAST:event_jTable1MouseClicked
 
+    private void txtHargaBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHargaBeliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHargaBeliActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSimpan;
@@ -480,11 +501,13 @@ public class StokView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtCariBarang;
     private javax.swing.JTextField txtHargaBarang;
+    private javax.swing.JTextField txtHargaBeli;
     private javax.swing.JTextField txtIDBarang;
     private javax.swing.JComboBox<String> txtJenisBarang;
     private javax.swing.JTextField txtNamaBarang;

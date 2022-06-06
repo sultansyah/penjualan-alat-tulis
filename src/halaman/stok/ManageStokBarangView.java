@@ -6,6 +6,7 @@ package halaman.stok;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 /**
@@ -21,6 +22,7 @@ public class ManageStokBarangView extends javax.swing.JPanel {
     public void clear() {
         txtNamaBarang.setText("");
         txtHargaBarang.setText("");
+        txtHargaBeli.setText("");
     }
 
     public void loadData() {
@@ -35,13 +37,14 @@ public class ManageStokBarangView extends javax.swing.JPanel {
             ResultSet r = s.executeQuery(sql);
 
             while (r.next()) {
-                Object[] o = new Object[6];
+                Object[] o = new Object[7];
                 o[0] = r.getString("id_barang");
                 o[1] = r.getString("nama_barang");
                 o[2] = r.getString("jenis_barang");
                 o[3] = r.getString("stok_barang");
-                o[4] = r.getString("harga_barang");
-                o[5] = r.getString("tgl_masuk");
+                o[4] = r.getString("harga_jual");
+                o[5] = r.getString("harga_beli");
+                o[6] = r.getString("tgl_masuk");
 
                 model.addRow(o);
             }
@@ -58,7 +61,6 @@ public class ManageStokBarangView extends javax.swing.JPanel {
     public ManageStokBarangView() {
         initComponents();
         
-
         txtIDBarang.setEnabled(false);
 
         model = new DefaultTableModel();
@@ -69,7 +71,8 @@ public class ManageStokBarangView extends javax.swing.JPanel {
         model.addColumn("Nama");
         model.addColumn("Jenis");
         model.addColumn("Stok");
-        model.addColumn("Harga");
+        model.addColumn("Harga Jual");
+        model.addColumn("Harga Beli");
         model.addColumn("Tanggal Masuk");
 
         loadData();
@@ -107,6 +110,8 @@ public class ManageStokBarangView extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txtJenisBarang = new javax.swing.JComboBox<>();
         txtTanggalMasuk = new com.toedter.calendar.JDateChooser();
+        jLabel9 = new javax.swing.JLabel();
+        txtHargaBeli = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(20, 195, 142));
 
@@ -134,7 +139,7 @@ public class ManageStokBarangView extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setText("Harga Barang");
+        jLabel6.setText("Harga Jual");
 
         btnBatal.setText("Batal");
         btnBatal.setBorderPainted(false);
@@ -232,6 +237,14 @@ public class ManageStokBarangView extends javax.swing.JPanel {
             }
         });
 
+        jLabel9.setText("Harga Beli");
+
+        txtHargaBeli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHargaBeliActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -257,23 +270,29 @@ public class ManageStokBarangView extends javax.swing.JPanel {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(txtCariBarang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtStokBarang, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtTanggalMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel7))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtJenisBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtTanggalMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtNamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtIDBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(31, 31, 31)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel4))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtHargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtJenisBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(33, 33, 33)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel6)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtHargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel9)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtHargaBeli, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(32, 32, 32)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnHapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -285,37 +304,44 @@ public class ManageStokBarangView extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtIDBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtHargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEdit))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtNamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHapus)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(txtHargaBeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtIDBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(txtHargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEdit))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtNamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtJenisBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnHapus))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel5)
-                                .addComponent(txtStokBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel7))
-                            .addComponent(btnBatal, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addComponent(txtTanggalMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCariBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtStokBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnBatal, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCariBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel4)
+                                .addComponent(txtJenisBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel7))
+                        .addComponent(txtTanggalMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(1527, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -330,7 +356,8 @@ public class ManageStokBarangView extends javax.swing.JPanel {
         String id = (String) model.getValueAt(i, 0);
         String jenis = (String) txtJenisBarang.getSelectedItem();
         String nama = txtNamaBarang.getText();
-        String harga = txtHargaBarang.getText();
+        String hargaJual = txtHargaBarang.getText();
+        String hargaBeli = txtHargaBeli.getText();
         String stok = txtStokBarang.getText();
 
         System.out.println(jenis);
@@ -342,14 +369,15 @@ public class ManageStokBarangView extends javax.swing.JPanel {
 
         try {
             Connection c = Koneksi.getKoneksi();
-            String sql = "UPDATE stok_barang SET nama_barang = ?, jenis_barang = ?, stok_barang = ?, harga_barang = ?, tgl_masuk = ? WHERE id_barang = " + id;
+            String sql = "UPDATE stok_barang SET nama_barang = ?, jenis_barang = ?, stok_barang = ?, harga_jual = ?, harga_beli = ?, tgl_masuk = ? WHERE id_barang = " + id;
             PreparedStatement p = c.prepareStatement(sql);
 
             p.setString(1, nama);
             p.setString(2, jenis);
             p.setString(3, stok);
-            p.setString(4, harga);
-            p.setString(5, tgl_masuk);
+            p.setString(4, hargaJual);
+            p.setString(5, hargaBeli);
+            p.setString(6, tgl_masuk);
 
             p.executeUpdate();
             p.close();
@@ -427,7 +455,8 @@ public class ManageStokBarangView extends javax.swing.JPanel {
         tabel.addColumn("Nama");
         tabel.addColumn("Jenis");
         tabel.addColumn("Stok");
-        tabel.addColumn("Harga");
+        tabel.addColumn("Harga Jual");
+        tabel.addColumn("Harga Beli");
         tabel.addColumn("Tanggal Masuk");
 
         if(txtCariBarang.getText().length() == 0){
@@ -444,12 +473,13 @@ public class ManageStokBarangView extends javax.swing.JPanel {
                         r.getString(3),
                         r.getString(4),
                         r.getString(5),
-                        r.getString(6)
+                        r.getString(6),
+                        r.getString(7)
                     });
                 }
                 jTable1.setModel(tabel);
                 loadData();
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 System.out.println("Pencarian Data Waktu Nilai Kosong Error");
             }
         } else {
@@ -466,12 +496,13 @@ public class ManageStokBarangView extends javax.swing.JPanel {
                         r.getString(3),
                         r.getString(4),
                         r.getString(5),
-                        r.getString(6)
+                        r.getString(6),
+                        r.getString(7)
                     });
                 }
                 jTable1.setModel(tabel);
                 loadData();
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 System.out.println("Pencarian Data Berdasarkan Nama Error");
             }
         }
@@ -499,15 +530,17 @@ public class ManageStokBarangView extends javax.swing.JPanel {
         System.out.println(jenis);
         String stok = (String) model.getValueAt(i, 3);
         txtStokBarang.setText(stok);
-        String harga = (String) model.getValueAt(i, 4);
-        txtHargaBarang.setText(harga);
+        String hargaJual = (String) model.getValueAt(i, 4);
+        txtHargaBarang.setText(hargaJual);
+        String hargaBeli = (String) model.getValueAt(i, 5);
+        txtHargaBeli.setText(hargaBeli);
 
-        String tgl_masuk = (String) jTable1.getModel().getValueAt(i, 5);
+        String tgl_masuk = (String) jTable1.getModel().getValueAt(i, 6);
         SimpleDateFormat f = new SimpleDateFormat("yyyy-M-dd");
         try {
             java.util.Date d = f.parse(tgl_masuk);
             txtTanggalMasuk.setDate(d);
-        } catch (Exception e) {
+        } catch (ParseException e) {
             System.out.println(e);
         }
         // GEN-LAST:event_jTable1MouseClicked
@@ -520,6 +553,10 @@ public class ManageStokBarangView extends javax.swing.JPanel {
     private void jTable1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable1MouseEntered
+
+    private void txtHargaBeliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHargaBeliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHargaBeliActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -535,11 +572,13 @@ public class ManageStokBarangView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtCariBarang;
     private javax.swing.JTextField txtHargaBarang;
+    private javax.swing.JTextField txtHargaBeli;
     private javax.swing.JTextField txtIDBarang;
     private javax.swing.JComboBox<String> txtJenisBarang;
     private javax.swing.JTextField txtNamaBarang;
