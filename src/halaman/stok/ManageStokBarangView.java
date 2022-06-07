@@ -3,21 +3,59 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package halaman.stok;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 
-/**
- *
- * @author sultan
- */
 public class ManageStokBarangView extends javax.swing.JPanel {
 
     Koneksi koneksi = new Koneksi();
 
     private DefaultTableModel model;
+    
+    public static void changeIDBarang(String id_barang){
+        setData(id_barang);
+    }
+    
+    private static void setData(String id_barang){
+        try {
+            Connection c = halaman.login.Koneksi.getKoneksi();
+            Statement s = c.createStatement();
+            
+            String sql = "SELECT * FROM stok_barang WHERE id_barang = '" + id_barang + "'";
+            
+            ResultSet rs = s.executeQuery(sql);
+
+            if (rs.next()) {                
+                if(id_barang.equals(rs.getString("id_barang"))){
+                    txtIDBarang.setText(id_barang);
+                    txtNamaBarang.setText(rs.getString("nama_barang"));
+                    txtJenisBarang.setSelectedItem(rs.getString("jenis_barang"));
+                    txtStokBarang.setText(rs.getString("stok_barang"));
+                    txtHargaBarang.setText(rs.getString("harga_jual"));
+                    txtHargaBeli.setText(rs.getString("harga_beli"));
+                    
+                    String tgl_masuk = (String) (rs.getString("tgl_masuk"));
+                    SimpleDateFormat f = new SimpleDateFormat("yyyy-M-dd");
+                    try {
+                        java.util.Date d = f.parse(tgl_masuk);
+                        txtTanggalMasuk.setDate(d);
+                    } catch (ParseException e) {
+                        System.out.println(e);
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "QR Code tidak terdaftar di sistem, mohon hubungi admin");
+            }
+        } catch (HeadlessException | SQLException ex){
+            System.out.println(Arrays.toString(ex.getStackTrace()));
+        }
+    }
+    
     
     public void clear() {
         txtNamaBarang.setText("");
@@ -112,6 +150,7 @@ public class ManageStokBarangView extends javax.swing.JPanel {
         txtTanggalMasuk = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
         txtHargaBeli = new javax.swing.JTextField();
+        btnScan = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(20, 195, 142));
 
@@ -184,9 +223,22 @@ public class ManageStokBarangView extends javax.swing.JPanel {
 
         jLabel8.setText("Cari Barang");
 
+        txtIDBarang.setText(".");
+        txtIDBarang.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                txtIDBarangInputMethodTextChanged(evt);
+            }
+        });
         txtIDBarang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDBarangActionPerformed(evt);
+            }
+        });
+        txtIDBarang.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                txtIDBarangPropertyChange(evt);
             }
         });
 
@@ -245,6 +297,14 @@ public class ManageStokBarangView extends javax.swing.JPanel {
             }
         });
 
+        btnScan.setText("Scan QRCode");
+        btnScan.setBorderPainted(false);
+        btnScan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnScanActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -296,8 +356,9 @@ public class ManageStokBarangView extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnHapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnBatal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 386, Short.MAX_VALUE)))
+                                    .addComponent(btnBatal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnScan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 383, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -313,13 +374,14 @@ public class ManageStokBarangView extends javax.swing.JPanel {
                     .addComponent(txtHargaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEdit))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtNamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnHapus)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel9)
-                        .addComponent(txtHargaBeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtHargaBeli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(txtNamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnHapus)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -328,10 +390,15 @@ public class ManageStokBarangView extends javax.swing.JPanel {
                                 .addComponent(jLabel5)
                                 .addComponent(txtStokBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnBatal, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtCariBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtCariBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnScan)))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -558,11 +625,26 @@ public class ManageStokBarangView extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHargaBeliActionPerformed
 
+    private void btnScanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScanActionPerformed
+        // TODO add your handling code here:
+        FrameScanBarang fcb = new FrameScanBarang();
+        fcb.setVisible(true);
+    }//GEN-LAST:event_btnScanActionPerformed
+
+    private void txtIDBarangPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtIDBarangPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDBarangPropertyChange
+
+    private void txtIDBarangInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_txtIDBarangInputMethodTextChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDBarangInputMethodTextChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBatal;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnScan;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -577,12 +659,12 @@ public class ManageStokBarangView extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtCariBarang;
-    private javax.swing.JTextField txtHargaBarang;
-    private javax.swing.JTextField txtHargaBeli;
-    private javax.swing.JTextField txtIDBarang;
-    private javax.swing.JComboBox<String> txtJenisBarang;
-    private javax.swing.JTextField txtNamaBarang;
-    private javax.swing.JTextField txtStokBarang;
-    private com.toedter.calendar.JDateChooser txtTanggalMasuk;
+    private static javax.swing.JTextField txtHargaBarang;
+    private static javax.swing.JTextField txtHargaBeli;
+    public static javax.swing.JTextField txtIDBarang;
+    private static javax.swing.JComboBox<String> txtJenisBarang;
+    private static javax.swing.JTextField txtNamaBarang;
+    private static javax.swing.JTextField txtStokBarang;
+    private static com.toedter.calendar.JDateChooser txtTanggalMasuk;
     // End of variables declaration//GEN-END:variables
 }
