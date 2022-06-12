@@ -1,0 +1,8 @@
+laporan semua barang
+SELECT SB.id_barang, SB.nama_barang, JB.jenis_barang, JS.jenis_jenis, ST.satuan, SB.stok_barang, SB.harga_beli, SB.harga_jual, SB.tgl_masuk_barang
+FROM stok_barang SB, jenis_barang JB, jenis_dari_jenis JS, satuan ST
+WHERE SB.id_jenis_barang = JB.id_jenis_barang AND SB.id_jenis_jenis = JS.id_jenis_jenis AND SB.id_satuan = ST.id_satuan AND JS.id_jenis_barang = JB.id_jenis_barang
+
+
+laporan berdasarkan tanggal awal dan akhir
+SELECT SB.id_barang, SB.nama_barang, JB.jenis_barang, JS.jenis_jenis, ST.satuan, SB.stok_barang, SB.harga_beli, SB.harga_jual, SB.tgl_masuk_barang FROM stok_barang SB, jenis_barang JB, jenis_dari_jenis JS, satuan ST WHERE SB.id_jenis_barang = JB.id_jenis_barang AND SB.id_jenis_jenis = JS.id_jenis_jenis AND SB.id_satuan = ST.id_satuan AND JS.id_jenis_barang = JB.id_jenis_barang AND tgl_masuk_barang >= '" + tgl_awal + "' AND tgl_masuk_barang <= '" + tgl_akhir + "'"

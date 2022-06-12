@@ -80,6 +80,7 @@
                               <Component id="btnManageBarang" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnManageJenisBarang" alignment="0" max="32767" attributes="0"/>
                               <Component id="btnManageSatuan" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnManageSatuan1" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="12" max="32767" attributes="0"/>
@@ -99,6 +100,8 @@
                       <Component id="btnManageJenisBarang1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnManageSatuan" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnManageSatuan1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -143,6 +146,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageJenisBarang1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnManageSatuan1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Laporan"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManageSatuan1ActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

@@ -11,6 +11,7 @@ public class FrameMainStokBarang extends javax.swing.JFrame {
     PanelManageSatuan panelManageSatuan;
     PanelManageJenisJenisBarang panelManageJenisJenisBarang;
     PanelManageBarang panelManageBarang;
+    PanelLaporanBarang panelLaporanBarang;
 
     /**
      * Creates new form MainBarang
@@ -46,6 +47,7 @@ public class FrameMainStokBarang extends javax.swing.JFrame {
         btnManageJenisBarang = new javax.swing.JButton();
         btnManageSatuan = new javax.swing.JButton();
         btnManageJenisBarang1 = new javax.swing.JButton();
+        btnManageSatuan1 = new javax.swing.JButton();
         PanelContent = new javax.swing.JPanel();
         jPanelHome = new javax.swing.JPanel();
 
@@ -91,6 +93,13 @@ public class FrameMainStokBarang extends javax.swing.JFrame {
             }
         });
 
+        btnManageSatuan1.setText("Laporan");
+        btnManageSatuan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageSatuan1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelMenuLayout = new javax.swing.GroupLayout(PanelMenu);
         PanelMenu.setLayout(PanelMenuLayout);
         PanelMenuLayout.setHorizontalGroup(
@@ -103,7 +112,8 @@ public class FrameMainStokBarang extends javax.swing.JFrame {
                         .addComponent(btnManageJenisBarang1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnManageBarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnManageJenisBarang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnManageSatuan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(btnManageSatuan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnManageSatuan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
         PanelMenuLayout.setVerticalGroup(
@@ -119,6 +129,8 @@ public class FrameMainStokBarang extends javax.swing.JFrame {
                 .addComponent(btnManageJenisBarang1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnManageSatuan)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnManageSatuan1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -239,6 +251,20 @@ public class FrameMainStokBarang extends javax.swing.JFrame {
         PanelContent.revalidate();
     }//GEN-LAST:event_btnManageBarangActionPerformed
 
+    private void btnManageSatuan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSatuan1ActionPerformed
+        // TODO add your handling code here:
+        PanelContent.removeAll();
+        PanelContent.repaint();
+        PanelContent.revalidate();
+        
+        // add
+        panelLaporanBarang = new PanelLaporanBarang();
+        
+        PanelContent.add(panelLaporanBarang);
+        PanelContent.repaint();
+        PanelContent.revalidate();
+    }//GEN-LAST:event_btnManageSatuan1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -290,6 +316,7 @@ public class FrameMainStokBarang extends javax.swing.JFrame {
     private javax.swing.JButton btnManageJenisBarang;
     private javax.swing.JButton btnManageJenisBarang1;
     private javax.swing.JButton btnManageSatuan;
+    private javax.swing.JButton btnManageSatuan1;
     private javax.swing.JPanel jPanelHome;
     // End of variables declaration//GEN-END:variables
 }
