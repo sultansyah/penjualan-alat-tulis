@@ -1,7 +1,6 @@
 package Main.login;
 
-import halaman.login.*;
-import halaman.stok.*;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
