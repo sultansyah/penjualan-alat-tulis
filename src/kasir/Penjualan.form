@@ -26,6 +26,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel1" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="txIDBarang" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -74,11 +75,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txUntung" max="32767" attributes="0"/>
                           <Component id="txTotalBayar" max="32767" attributes="0"/>
                           <Component id="txBayar" max="32767" attributes="0"/>
                       </Group>
@@ -96,54 +95,41 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txNoTransaksi" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txIDKaryawan" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txNamaKaryawan" alignment="0" pref="80" max="32767" attributes="0"/>
-                      </Group>
+                      <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                      <Component id="txNoTransaksi" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="txTanggal" min="-2" pref="116" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="txTanggal" min="-2" pref="176" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="txNoTransaksi" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txTanggal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txTanggal" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="txNoTransaksi" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txIDKaryawan" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txNamaKaryawan" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                       <Component id="JenisBarang" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="179" max="-2" attributes="0"/>
@@ -159,11 +145,6 @@
                                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txBayar" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txUntung" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -171,7 +152,7 @@
                                   <Component id="jLabel13" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
                                   <Component id="txTampil" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="9" max="32767" attributes="0"/>
+                              <EmptySpace pref="12" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txKembalian" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -181,7 +162,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -232,7 +213,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="97" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="335" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="369" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -261,16 +242,6 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="text" type="java.lang.String" value="No Transaksi"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="ID Karyawan"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Nama Karyawan"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
@@ -303,22 +274,10 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txIDKaryawan">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txIDKaryawanActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txNamaKaryawan">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txTanggal">
-      <Properties>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
-      </AuxValues>
-    </Component>
     <Component class="javax.swing.JTextField" name="txIDBarang">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txIDBarangKeyTyped"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
       </AuxValues>
@@ -441,7 +400,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel13">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Total Harga"/>
+        <Property name="text" type="java.lang.String" value="Total Harga Rp"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="JenisBarang">
@@ -460,16 +419,6 @@
         <Property name="text" type="java.lang.String" value="Jenis Barang"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel15">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Untung"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txUntung">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txUntungActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btnSimpan">
       <Properties>
         <Property name="text" type="java.lang.String" value="Simpan"/>
@@ -485,6 +434,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnScanActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="com.toedter.calendar.JDateChooser" name="txTanggal">
     </Component>
   </SubComponents>
 </Form>
