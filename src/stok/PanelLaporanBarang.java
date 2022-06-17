@@ -38,7 +38,7 @@ public class PanelLaporanBarang extends javax.swing.JPanel {
             // TODO add your handling code here:
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/penjualan-alat-tulis", "root", "");
-            JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\sultan\\OneDrive\\Dokumen\\NetBeansProjects\\penjualan-alat-tulis\\src\\Main\\report\\" + nama_report + ".jrxml");
+            JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\sultan\\OneDrive\\Dokumen\\NetBeansProjects\\penjualan-alat-tulis\\src\\report\\" + nama_report + ".jrxml");
             
             System.out.println(query);
             

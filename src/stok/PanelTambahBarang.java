@@ -159,7 +159,6 @@ public class PanelTambahBarang extends javax.swing.JPanel {
         model.addColumn("Deskripsi");
         model.addColumn("Jenis Barang");
         model.addColumn("Jenis");
-        model.addColumn("Daerah");
         model.addColumn("Satuan");
         model.addColumn("Stok");
         model.addColumn("Harga Beli");

@@ -39,7 +39,14 @@ public class GenerateQRCodeFrame extends javax.swing.JFrame {
     
     public GenerateQRCodeFrame() {
         initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_HORIZ);
+        this.setVisible(true);
+        this.setResizable(false);
+        
+        generateQR("BG2", "barang");
     }
+    
+    
     
     private void generateQR(String id, String modul){
         try{
