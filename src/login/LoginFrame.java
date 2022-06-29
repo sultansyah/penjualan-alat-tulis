@@ -25,6 +25,8 @@ public class LoginFrame extends javax.swing.JFrame {
     
     public static String level = "";
     public static Boolean login = false;
+    public static String id_karyawan = "";
+    public static String nama_karyawan = "";
 
     /**
      * Creates new form LoginFrame
@@ -38,13 +40,17 @@ public class LoginFrame extends javax.swing.JFrame {
             Connection c = Koneksi.getKoneksi();
             Statement s = c.createStatement();
             
-            String sql = "SELECT USR.*, LV.* FROM user USR, level LV WHERE USR.id_level = LV.id_level AND USR.username = '" + username + "' AND USR.password = '" + password +"'";
+            String sql = "SELECT USR.*, LV.* FROM user USR, karyawan LV WHERE USR.karyawanID = LV.karyawanID AND USR.username = '" + username + "' AND USR.password = '" + password +"'";
             ResultSet rs = s.executeQuery(sql);
 
             if (rs.next()) {
                 if(username.equals(rs.getString("username")) && password.equals(rs.getString("password"))){
                     JOptionPane.showMessageDialog(null, "berhasil login");
-                    showFrameByLevel(rs.getString("level"));
+                    if(rs.getString("jabatan").equalsIgnoreCase("kasir")){
+                        Penjualan.id_karyawan = rs.getString("karyawanID");
+                        Penjualan.nama_karyawan = rs.getString("nama");
+                    }
+                    showFrameByLevel(rs.getString("jabatan"));
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "username atau password salah");
@@ -84,24 +90,16 @@ public class LoginFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        txtPassword = new javax.swing.JTextField();
         txtUsername = new javax.swing.JTextField();
         btnLogin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtScan = new javax.swing.JButton();
+        txtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(20, 195, 142));
 
-        txtPassword.setText("sultan");
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
-            }
-        });
-
-        txtUsername.setText("sultan");
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsernameActionPerformed(evt);
@@ -133,13 +131,12 @@ public class LoginFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(172, 172, 172)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtPassword)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addComponent(btnLogin))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtUsername)
-                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addComponent(jLabel1))
@@ -200,10 +197,6 @@ public class LoginFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsernameActionPerformed
 
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -244,7 +237,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JButton txtScan;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables

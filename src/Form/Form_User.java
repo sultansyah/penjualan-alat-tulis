@@ -9,13 +9,16 @@ import koneksiDB.koneksi;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author khazil
  */
 public class Form_User extends javax.swing.JFrame {
     private DefaultTableModel model;
-    String vUser,vPass;
+    String vUser,vPass, vKaryawan;
     int vId;
     private static Statement st;
     /**
@@ -28,12 +31,30 @@ public class Form_User extends javax.swing.JFrame {
         model.addColumn("No ID");
         model.addColumn("Username");
         model.addColumn("Password");
+        model.addColumn("Nama");
         getData();
         jButton2.setEnabled(false);
         jButton3.setEnabled(false);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = getSize();
         setLocation((screenSize.width - frameSize.width)/2,(screenSize.height-frameSize.height)/2);
+        
+        ArrayList<String> item_karyawan = new ArrayList<String>();
+        
+        try {
+            txtKaryawan.removeAllItems();
+            st = (Statement) koneksi.getKoneksi().createStatement();
+            String sql = "SELECT * FROM karyawan";
+            ResultSet res = st.executeQuery(sql);
+            while(res.next()){
+                item_karyawan.add(res.getString("nama"));
+            }
+            for(String nama: item_karyawan){
+                txtKaryawan.addItem(nama);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Form_User.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     public void getData(){
         model.getDataVector().removeAllElements();
@@ -43,10 +64,20 @@ public class Form_User extends javax.swing.JFrame {
             String sql = "SELECT * FROM user";
             ResultSet res = st.executeQuery(sql);
             while(res.next()){
-                Object[] obj = new Object[3];
+                Object[] obj = new Object[4];
                 obj[0] = res.getString("noID");
                 obj[1] = res.getString("username");
                 obj[2] = res.getString("password");
+                
+                String id_karyawan = res.getString("karyawanID");
+                
+                st = (Statement) koneksi.getKoneksi().createStatement();
+                String sql1 = "SELECT * FROM karyawan WHERE karyawanID = '" + id_karyawan + "'";
+                ResultSet res1 = st.executeQuery(sql1);
+                while(res1.next()){
+                    obj[3] = res1.getString("nama");
+                }
+                
                 model.addRow(obj);
             }
         }catch(SQLException err){
@@ -54,15 +85,26 @@ public class Form_User extends javax.swing.JFrame {
         }
     }
     public void loadData(){
-        vUser = user.getText();
-        vPass = pass.getSelectedText();
+        try {
+            vUser = user.getText();
+            vPass = pass.getText();
+            vKaryawan = (String) txtKaryawan.getSelectedItem();
+            
+            String sql = "SELECT * FROM karyawan WHERE nama = '" + vKaryawan + "'";
+            ResultSet res = st.executeQuery(sql);
+            while(res.next()){
+                vKaryawan = res.getString("karyawanID");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Form_User.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     public void save(){
         loadData();
         try{
         st = (Statement)koneksi.getKoneksi().createStatement();
-        String sql = "Insert into user(username,password)"
-                +"values('"+vUser+"','"+vPass+"')";
+        String sql = "Insert into user(username,password, karyawanID)"
+                +"values('"+vUser+"','"+vPass+"','"+vKaryawan+"')";
         PreparedStatement p = (PreparedStatement)koneksi.getKoneksi().prepareStatement(sql);
         p.executeUpdate(sql);
         getData();
@@ -78,25 +120,36 @@ public class Form_User extends javax.swing.JFrame {
         vId = 0;
         vUser  = "";
         vPass = "";
+        vKaryawan = "";
         user.setText(null);
         pass.setText(null);
     }
     public void selectData(){
-        int i = tbl.getSelectedRow();
-        if(i == -1){
-            JOptionPane.showMessageDialog(null, "Tidak ada data terpilih!");
-            return;
+        try {
+            int i = tbl.getSelectedRow();
+            if(i == -1){
+                JOptionPane.showMessageDialog(null, "Tidak ada data terpilih!");
+                return;
+            }
+            user.setText(""+model.getValueAt(i, 1));
+            pass.setText(""+model.getValueAt(i, 2));
+            vId = Integer.valueOf(""+model.getValueAt(i, 0));
+            txtKaryawan.setSelectedItem(model.getValueAt(i, 3));
+            
+//            String sql = "SELECT * FROM karyawan WHERE nama = '" + model.getValueAt(i, 3) + "'";
+//            ResultSet res = st.executeQuery(sql);
+//            while(res.next()){
+//                txtKaryawan.setSelectedItem(res.getString("nama"));
+//            }
+        } catch (Exception ex) {
+            Logger.getLogger(Form_User.class.getName()).log(Level.SEVERE, null, ex);
         }
-        user.setText(""+model.getValueAt(i, 1));
-        pass.setText(""+model.getValueAt(i, 2));
-        vId = Integer.valueOf(""+model.getValueAt(i, 0));
     }
     public void update(){
         loadData();
         try{
            st = (Statement)koneksi.getKoneksi().createStatement();
-           String sql = "update user set username = '"+vUser+"',"
-                   + "password='"+vPass+"' where noID='"+vId+"'";
+           String sql = "update user set username = '"+vUser+"'," + "password='"+vPass+"'," + "karyawanID='"+vKaryawan+"' where noID='"+vId+"'";
         PreparedStatement p = (PreparedStatement)koneksi.getKoneksi().prepareStatement(sql);
         p.executeUpdate();
         getData();
@@ -148,6 +201,8 @@ public class Form_User extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         pass = new javax.swing.JPasswordField();
+        jLabel4 = new javax.swing.JLabel();
+        txtKaryawan = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl = new javax.swing.JTable();
@@ -215,24 +270,12 @@ public class Form_User extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Karyawan");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(user, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                    .addComponent(pass))
-                .addContainerGap(101, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
@@ -243,6 +286,21 @@ public class Form_User extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(18, 18, 18)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(user)
+                    .addComponent(pass)
+                    .addComponent(txtKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,7 +308,7 @@ public class Form_User extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -258,14 +316,18 @@ public class Form_User extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING)))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jButton4))
+                .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -278,18 +340,18 @@ public class Form_User extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 38, Short.MAX_VALUE)
+            .addGap(0, 32, Short.MAX_VALUE)
         );
 
         tbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
         tbl.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -325,10 +387,10 @@ public class Form_User extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(31, 31, 31)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -410,6 +472,7 @@ public class Form_User extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -417,6 +480,7 @@ public class Form_User extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JPasswordField pass;
     private javax.swing.JTable tbl;
+    private javax.swing.JComboBox<String> txtKaryawan;
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
 }
